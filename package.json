@@ -1,0 +1,36 @@
+{
+  "name": "scratch-samlabs",
+  "version": "0.0.0",
+  "description": "extension for Xcratch",
+  "scripts": {
+    "setup-dev": "node ./scripts/setup-dev.mjs",
+    "build": "rollup -c ./scripts/rollup.config.mjs",
+    "watch": "rollup -c ./scripts/rollup.config.mjs --watch",
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@babel/eslint-parser": "^7.26.8",
+    "@babel/plugin-transform-react-jsx": "^7.25.9",
+    "@babel/plugin-transform-runtime": "^7.26.9",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/register": "^7.25.9",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-image": "^3.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-multi-entry": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "chai": "^5.2.0",
+    "core-js": "^3.40.0",
+    "eslint": "^8.57.0",
+    "eslint-config-scratch": "^9.0.9",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-mocha": "^10.5.0",
+    "fs-extra": "^11.3.0",
+    "mocha": "^11.1.0",
+    "rollup": "^4.34.7",
+    "rollup-plugin-polyfill-node": "^0.13.0"
+  }
+}
