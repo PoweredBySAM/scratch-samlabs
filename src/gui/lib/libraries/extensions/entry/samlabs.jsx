@@ -23,21 +23,21 @@ const entry = {
         });
     },
     extensionId: 'samlabs',
-    extensionURL: 'https://Rbel12b.github.io/scratch-samlabs/dist/samlabs.mjs',
-    collaborator: 'Rbel12b',
+    extensionURL: 'https://Rbel12b.github.io/Scratch/dist/samlabs.mjs',
+    // collaborator: 'Rbel12b',
     iconURL: iconURL,
     insetIconURL: insetIconURL,
     get description () {
         return formatMessage({
+            id: 'samlabs.entry.description',
             defaultMessage: 'SAM Labs',
-            description: 'Description for the \'SAM Labs\' extension',
-            id: 'samlabs.entry.description'
+            description: 'Description for the \'SAM Labs\' extension'
         });
     },
     tags: [],
     featured: true,
     disabled: false,
-    bluetoothRequired: false,
+    bluetoothRequired: true,
     internetConnectionRequired: false,
     helpLink: 'https://Rbel12b.github.io/scratch-samlabs/',
     setFormatMessage: formatter => {

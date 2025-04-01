@@ -4,7 +4,9 @@ var img = "data:image/svg+xml,%3c%3fxml version='1.0' encoding='utf-8'%3f%3e%3c!
 
 var en$1 = {
 	"samlabs.entry.name": "SAM Labs",
-	"samlabs.entry.description": "Description for the 'SAM Labs' extension"
+	"samlabs.entry.description": "SAM Labs",
+	"sambot.entry.name": "Baby SAM Bot",
+	"sambot.entry.description": "Baby SAM Bot"
 };
 var translations$1 = {
 	en: en$1
@@ -33,21 +35,21 @@ var entry = {
     });
   },
   extensionId: 'samlabs',
-  extensionURL: 'https://Rbel12b.github.io/scratch-samlabs/dist/samlabs.mjs',
-  collaborator: 'Rbel12b',
+  extensionURL: 'https://Rbel12b.github.io/Scratch/dist/samlabs.mjs',
+  // collaborator: 'Rbel12b',
   iconURL: img$1,
   insetIconURL: img,
   get description() {
     return formatMessage$1({
+      id: 'samlabs.entry.description',
       defaultMessage: 'SAM Labs',
-      description: 'Description for the \'SAM Labs\' extension',
-      id: 'samlabs.entry.description'
+      description: 'Description for the \'SAM Labs\' extension'
     });
   },
   tags: [],
   featured: true,
   disabled: false,
-  bluetoothRequired: false,
+  bluetoothRequired: true,
   internetConnectionRequired: false,
   helpLink: 'https://Rbel12b.github.io/scratch-samlabs/',
   setFormatMessage: function setFormatMessage(formatter) {
@@ -82,47 +84,58 @@ function _asyncToGenerator(n) {
   };
 }
 
-function _typeof$1(o) {
+function _typeof$2(o) {
   "@babel/helpers - typeof";
 
-  return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+  return _typeof$2 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
     return typeof o;
   } : function (o) {
     return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
-  }, _typeof$1(o);
+  }, _typeof$2(o);
 }
 
-function toPrimitive(t, r) {
-  if ("object" != _typeof$1(t) || !t) return t;
+function toPrimitive$1(t, r) {
+  if ("object" != _typeof$2(t) || !t) return t;
   var e = t[Symbol.toPrimitive];
   if (void 0 !== e) {
     var i = e.call(t, r);
-    if ("object" != _typeof$1(i)) return i;
+    if ("object" != _typeof$2(i)) return i;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return (String )(t);
 }
 
-function toPropertyKey(t) {
-  var i = toPrimitive(t, "string");
-  return "symbol" == _typeof$1(i) ? i : i + "";
+function toPropertyKey$1(t) {
+  var i = toPrimitive$1(t, "string");
+  return "symbol" == _typeof$2(i) ? i : i + "";
 }
 
-function _defineProperties(e, r) {
+function _defineProperties$1(e, r) {
   for (var t = 0; t < r.length; t++) {
     var o = r[t];
-    o.enumerable = o.enumerable || false, o.configurable = true, "value" in o && (o.writable = true), Object.defineProperty(e, toPropertyKey(o.key), o);
+    o.enumerable = o.enumerable || false, o.configurable = true, "value" in o && (o.writable = true), Object.defineProperty(e, toPropertyKey$1(o.key), o);
   }
 }
-function _createClass(e, r, t) {
-  return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", {
+function _createClass$1(e, r, t) {
+  return r && _defineProperties$1(e.prototype, r), t && _defineProperties$1(e, t), Object.defineProperty(e, "prototype", {
     writable: false
   }), e;
 }
 
-function _classCallCheck(a, n) {
+function _classCallCheck$1(a, n) {
   if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function");
 }
+
+function _defineProperty(e, r, t) {
+  return (r = toPropertyKey$1(r)) in e ? Object.defineProperty(e, r, {
+    value: t,
+    enumerable: true,
+    configurable: true,
+    writable: true
+  }) : e[r] = t, e;
+}
+
+var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function getDefaultExportFromCjs (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -130,11 +143,11 @@ function getDefaultExportFromCjs (x) {
 
 var regeneratorRuntime$1 = {exports: {}};
 
-var _typeof = {exports: {}};
+var _typeof$1 = {exports: {}};
 
 var hasRequired_typeof;
 function require_typeof() {
-  if (hasRequired_typeof) return _typeof.exports;
+  if (hasRequired_typeof) return _typeof$1.exports;
   hasRequired_typeof = 1;
   (function (module) {
     function _typeof(o) {
@@ -147,8 +160,8 @@ function require_typeof() {
       }, module.exports.__esModule = true, module.exports["default"] = module.exports, _typeof(o);
     }
     module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
-  })(_typeof);
-  return _typeof.exports;
+  })(_typeof$1);
+  return _typeof$1.exports;
 }
 
 var hasRequiredRegeneratorRuntime;
@@ -479,7 +492,7 @@ function requireRegenerator() {
   try {
     regeneratorRuntime = runtime;
   } catch (accidentalStrictMode) {
-    if ((typeof globalThis === "undefined" ? "undefined" : _typeof$1(globalThis)) === "object") {
+    if ((typeof globalThis === "undefined" ? "undefined" : _typeof$2(globalThis)) === "object") {
       globalThis.regeneratorRuntime = runtime;
     } else {
       Function("r", "regeneratorRuntime = r")(runtime);
@@ -594,607 +607,1680 @@ function requireArgumentType() {
 var argumentTypeExports = requireArgumentType();
 var ArgumentType = /*@__PURE__*/getDefaultExportFromCjs(argumentTypeExports);
 
-var web = {exports: {}};
-
-var minilog$1 = {exports: {}};
-
-var microee;
-var hasRequiredMicroee;
-function requireMicroee() {
-  if (hasRequiredMicroee) return microee;
-  hasRequiredMicroee = 1;
-  function M() {
-    this._events = {};
-  }
-  M.prototype = {
-    on: function on(ev, cb) {
-      this._events || (this._events = {});
-      var e = this._events;
-      (e[ev] || (e[ev] = [])).push(cb);
-      return this;
-    },
-    removeListener: function removeListener(ev, cb) {
-      var e = this._events[ev] || [],
-        i;
-      for (i = e.length - 1; i >= 0 && e[i]; i--) {
-        if (e[i] === cb || e[i].cb === cb) {
-          e.splice(i, 1);
-        }
-      }
-    },
-    removeAllListeners: function removeAllListeners(ev) {
-      if (!ev) {
-        this._events = {};
-      } else {
-        this._events[ev] && (this._events[ev] = []);
-      }
-    },
-    listeners: function listeners(ev) {
-      return this._events ? this._events[ev] || [] : [];
-    },
-    emit: function emit(ev) {
-      this._events || (this._events = {});
-      var args = Array.prototype.slice.call(arguments, 1),
-        i,
-        e = this._events[ev] || [];
-      for (i = e.length - 1; i >= 0 && e[i]; i--) {
-        e[i].apply(this, args);
-      }
-      return this;
-    },
-    when: function when(ev, cb) {
-      return this.once(ev, cb, true);
-    },
-    once: function once(ev, cb, when) {
-      if (!cb) return this;
-      function c() {
-        if (!when) this.removeListener(ev, c);
-        if (cb.apply(this, arguments) && when) this.removeListener(ev, c);
-      }
-      c.cb = cb;
-      this.on(ev, c);
-      return this;
-    }
-  };
-  M.mixin = function (dest) {
-    var o = M.prototype,
-      k;
-    for (k in o) {
-      o.hasOwnProperty(k) && (dest.prototype[k] = o[k]);
-    }
-  };
-  microee = M;
-  return microee;
-}
-
-var transform;
-var hasRequiredTransform;
-function requireTransform() {
-  if (hasRequiredTransform) return transform;
-  hasRequiredTransform = 1;
-  var microee = requireMicroee();
-
-  // Implements a subset of Node's stream.Transform - in a cross-platform manner.
-  function Transform() {}
-  microee.mixin(Transform);
-
-  // The write() signature is different from Node's
-  // --> makes it much easier to work with objects in logs.
-  // One of the lessons from v1 was that it's better to target
-  // a good browser rather than the lowest common denominator
-  // internally.
-  // If you want to use external streams, pipe() to ./stringify.js first.
-  Transform.prototype.write = function (name, level, args) {
-    this.emit('item', name, level, args);
-  };
-  Transform.prototype.end = function () {
-    this.emit('end');
-    this.removeAllListeners();
-  };
-  Transform.prototype.pipe = function (dest) {
-    var s = this;
-    // prevent double piping
-    s.emit('unpipe', dest);
-    // tell the dest that it's being piped to
-    dest.emit('pipe', s);
-    function onItem() {
-      dest.write.apply(dest, Array.prototype.slice.call(arguments));
-    }
-    function onEnd() {
-      !dest._isStdio && dest.end();
-    }
-    s.on('item', onItem);
-    s.on('end', onEnd);
-    s.when('unpipe', function (from) {
-      var match = from === dest || typeof from == 'undefined';
-      if (match) {
-        s.removeListener('item', onItem);
-        s.removeListener('end', onEnd);
-        dest.emit('unpipe');
-      }
-      return match;
-    });
-    return dest;
-  };
-  Transform.prototype.unpipe = function (from) {
-    this.emit('unpipe', from);
-    return this;
-  };
-  Transform.prototype.format = function (dest) {
-    throw new Error(['Warning: .format() is deprecated in Minilog v2! Use .pipe() instead. For example:', 'var Minilog = require(\'minilog\');', 'Minilog', '  .pipe(Minilog.backends.console.formatClean)', '  .pipe(Minilog.backends.console);'].join('\n'));
-  };
-  Transform.mixin = function (dest) {
-    var o = Transform.prototype,
-      k;
-    for (k in o) {
-      o.hasOwnProperty(k) && (dest.prototype[k] = o[k]);
-    }
-  };
-  transform = Transform;
-  return transform;
-}
-
-var filter;
-var hasRequiredFilter;
-function requireFilter() {
-  if (hasRequiredFilter) return filter;
-  hasRequiredFilter = 1;
-  // default filter
-  var Transform = requireTransform();
-  var levelMap = {
-    debug: 1,
-    info: 2,
-    warn: 3,
-    error: 4
-  };
-  function Filter() {
-    this.enabled = true;
-    this.defaultResult = true;
-    this.clear();
-  }
-  Transform.mixin(Filter);
-
-  // allow all matching, with level >= given level
-  Filter.prototype.allow = function (name, level) {
-    this._white.push({
-      n: name,
-      l: levelMap[level]
-    });
-    return this;
-  };
-
-  // deny all matching, with level <= given level
-  Filter.prototype.deny = function (name, level) {
-    this._black.push({
-      n: name,
-      l: levelMap[level]
-    });
-    return this;
-  };
-  Filter.prototype.clear = function () {
-    this._white = [];
-    this._black = [];
-    return this;
-  };
-  function test(rule, name) {
-    // use .test for RegExps
-    return rule.n.test ? rule.n.test(name) : rule.n == name;
-  }
-  Filter.prototype.test = function (name, level) {
-    var i,
-      len = Math.max(this._white.length, this._black.length);
-    for (i = 0; i < len; i++) {
-      if (this._white[i] && test(this._white[i], name) && levelMap[level] >= this._white[i].l) {
-        return true;
-      }
-      if (this._black[i] && test(this._black[i], name) && levelMap[level] <= this._black[i].l) {
-        return false;
-      }
-    }
-    return this.defaultResult;
-  };
-  Filter.prototype.write = function (name, level, args) {
-    if (!this.enabled || this.test(name, level)) {
-      return this.emit('item', name, level, args);
-    }
-  };
-  filter = Filter;
-  return filter;
-}
-
-var hasRequiredMinilog$1;
-function requireMinilog$1() {
-  if (hasRequiredMinilog$1) return minilog$1.exports;
-  hasRequiredMinilog$1 = 1;
-  (function (module, exports) {
-    var Transform = requireTransform(),
-      Filter = requireFilter();
-    var log = new Transform(),
-      slice = Array.prototype.slice;
-    exports = module.exports = function create(name) {
-      var _o = function o() {
-        log.write(name, undefined, slice.call(arguments));
-        return _o;
-      };
-      _o.debug = function () {
-        log.write(name, 'debug', slice.call(arguments));
-        return _o;
-      };
-      _o.info = function () {
-        log.write(name, 'info', slice.call(arguments));
-        return _o;
-      };
-      _o.warn = function () {
-        log.write(name, 'warn', slice.call(arguments));
-        return _o;
-      };
-      _o.error = function () {
-        log.write(name, 'error', slice.call(arguments));
-        return _o;
-      };
-      _o.log = _o.debug; // for interface compliance with Node and browser consoles
-      _o.suggest = exports.suggest;
-      _o.format = log.format;
-      return _o;
-    };
-
-    // filled in separately
-    exports.defaultBackend = exports.defaultFormatter = null;
-    exports.pipe = function (dest) {
-      return log.pipe(dest);
-    };
-    exports.end = exports.unpipe = exports.disable = function (from) {
-      return log.unpipe(from);
-    };
-    exports.Transform = Transform;
-    exports.Filter = Filter;
-    // this is the default filter that's applied when .enable() is called normally
-    // you can bypass it completely and set up your own pipes
-    exports.suggest = new Filter();
-    exports.enable = function () {
-      if (exports.defaultFormatter) {
-        return log.pipe(exports.suggest) // filter
-        .pipe(exports.defaultFormatter) // formatter
-        .pipe(exports.defaultBackend); // backend
-      }
-      return log.pipe(exports.suggest) // filter
-      .pipe(exports.defaultBackend); // formatter
-    };
-  })(minilog$1, minilog$1.exports);
-  return minilog$1.exports;
-}
-
-var util;
-var hasRequiredUtil;
-function requireUtil() {
-  if (hasRequiredUtil) return util;
-  hasRequiredUtil = 1;
-  var hex = {
-    black: '#000',
-    red: '#c23621',
-    green: '#25bc26',
-    yellow: '#bbbb00',
-    blue: '#492ee1',
-    magenta: '#d338d3',
-    cyan: '#33bbc8',
-    gray: '#808080',
-    purple: '#708'
-  };
-  function color(fg, isInverse) {
-    if (isInverse) {
-      return 'color: #fff; background: ' + hex[fg] + ';';
-    } else {
-      return 'color: ' + hex[fg] + ';';
-    }
-  }
-  util = color;
-  return util;
-}
-
-var color_1;
-var hasRequiredColor;
-function requireColor() {
-  if (hasRequiredColor) return color_1;
-  hasRequiredColor = 1;
-  var Transform = requireTransform(),
-    color = requireUtil();
-  var colors = {
-      debug: ['cyan'],
-      info: ['purple'],
-      warn: ['yellow', true],
-      error: ['red', true]
-    },
-    logger = new Transform();
-  logger.write = function (name, level, args) {
-    var fn = console.log;
-    if (console[level] && console[level].apply) {
-      fn = console[level];
-      fn.apply(console, ['%c' + name + ' %c' + level, color('gray'), color.apply(color, colors[level])].concat(args));
-    }
-  };
-
-  // NOP, because piping the formatted logs can only cause trouble.
-  logger.pipe = function () {};
-  color_1 = logger;
-  return color_1;
-}
-
-var minilog;
-var hasRequiredMinilog;
-function requireMinilog() {
-  if (hasRequiredMinilog) return minilog;
-  hasRequiredMinilog = 1;
-  var Transform = requireTransform(),
-    color = requireUtil(),
-    colors = {
-      debug: ['gray'],
-      info: ['purple'],
-      warn: ['yellow', true],
-      error: ['red', true]
-    },
-    logger = new Transform();
-  logger.write = function (name, level, args) {
-    var fn = console.log;
-    if (level != 'debug' && console[level]) {
-      fn = console[level];
-    }
-    var i = 0;
-    if (level != 'info') {
-      for (; i < args.length; i++) {
-        if (typeof args[i] != 'string') break;
-      }
-      fn.apply(console, ['%c' + name + ' ' + args.slice(0, i).join(' '), color.apply(color, colors[level])].concat(args.slice(i)));
-    } else {
-      fn.apply(console, ['%c' + name, color.apply(color, colors[level])].concat(args));
-    }
-  };
-
-  // NOP, because piping the formatted logs can only cause trouble.
-  logger.pipe = function () {};
-  minilog = logger;
-  return minilog;
-}
-
-var console_1;
-var hasRequiredConsole;
-function requireConsole() {
-  if (hasRequiredConsole) return console_1;
-  hasRequiredConsole = 1;
-  var Transform = requireTransform();
-  var newlines = /\n+$/,
-    logger = new Transform();
-  logger.write = function (name, level, args) {
-    var i = args.length - 1;
-    if (typeof console === 'undefined' || !console.log) {
-      return;
-    }
-    if (console.log.apply) {
-      return console.log.apply(console, [name, level].concat(args));
-    } else if (JSON && JSON.stringify) {
-      // console.log.apply is undefined in IE8 and IE9
-      // for IE8/9: make console.log at least a bit less awful
-      if (args[i] && typeof args[i] == 'string') {
-        args[i] = args[i].replace(newlines, '');
-      }
-      try {
-        for (i = 0; i < args.length; i++) {
-          args[i] = JSON.stringify(args[i]);
-        }
-      } catch (e) {}
-      console.log(args.join(' '));
-    }
-  };
-  logger.formatters = ['color', 'minilog'];
-  logger.color = requireColor();
-  logger.minilog = requireMinilog();
-  console_1 = logger;
-  return console_1;
-}
-
-var array;
-var hasRequiredArray;
-function requireArray() {
-  if (hasRequiredArray) return array;
-  hasRequiredArray = 1;
-  var Transform = requireTransform(),
-    cache = [];
-  var logger = new Transform();
-  logger.write = function (name, level, args) {
-    cache.push([name, level, args]);
-  };
-
-  // utility functions
-  logger.get = function () {
-    return cache;
-  };
-  logger.empty = function () {
-    cache = [];
-  };
-  array = logger;
-  return array;
-}
-
-var localstorage;
-var hasRequiredLocalstorage;
-function requireLocalstorage() {
-  if (hasRequiredLocalstorage) return localstorage;
-  hasRequiredLocalstorage = 1;
-  var Transform = requireTransform(),
-    cache = false;
-  var logger = new Transform();
-  logger.write = function (name, level, args) {
-    if (typeof window == 'undefined' || typeof JSON == 'undefined' || !JSON.stringify || !JSON.parse) return;
-    try {
-      if (!cache) {
-        cache = window.localStorage.minilog ? JSON.parse(window.localStorage.minilog) : [];
-      }
-      cache.push([new Date().toString(), name, level, args]);
-      window.localStorage.minilog = JSON.stringify(cache);
-    } catch (e) {}
-  };
-  localstorage = logger;
-  return localstorage;
-}
-
-var jquery_simple;
-var hasRequiredJquery_simple;
-function requireJquery_simple() {
-  if (hasRequiredJquery_simple) return jquery_simple;
-  hasRequiredJquery_simple = 1;
-  var Transform = requireTransform();
-  var cid = new Date().valueOf().toString(36);
-  function AjaxLogger(options) {
-    this.url = options.url || '';
-    this.cache = [];
-    this.timer = null;
-    this.interval = options.interval || 30 * 1000;
-    this.enabled = true;
-    this.jQuery = window.jQuery;
-    this.extras = {};
-  }
-  Transform.mixin(AjaxLogger);
-  AjaxLogger.prototype.write = function (name, level, args) {
-    if (!this.timer) {
-      this.init();
-    }
-    this.cache.push([name, level].concat(args));
-  };
-  AjaxLogger.prototype.init = function () {
-    if (!this.enabled || !this.jQuery) return;
-    var self = this;
-    this.timer = setTimeout(function () {
-      var i,
-        logs = [],
-        ajaxData,
-        url = self.url;
-      if (self.cache.length == 0) return self.init();
-      // Test each log line and only log the ones that are valid (e.g. don't have circular references).
-      // Slight performance hit but benefit is we log all valid lines.
-      for (i = 0; i < self.cache.length; i++) {
-        try {
-          JSON.stringify(self.cache[i]);
-          logs.push(self.cache[i]);
-        } catch (e) {}
-      }
-      if (self.jQuery.isEmptyObject(self.extras)) {
-        ajaxData = JSON.stringify({
-          logs: logs
-        });
-        url = self.url + '?client_id=' + cid;
-      } else {
-        ajaxData = JSON.stringify(self.jQuery.extend({
-          logs: logs
-        }, self.extras));
-      }
-      self.jQuery.ajax(url, {
-        type: 'POST',
-        cache: false,
-        processData: false,
-        data: ajaxData,
-        contentType: 'application/json',
-        timeout: 10000
-      }).success(function (data, status, jqxhr) {
-        if (data.interval) {
-          self.interval = Math.max(1000, data.interval);
-        }
-      }).error(function () {
-        self.interval = 30000;
-      }).always(function () {
-        self.init();
-      });
-      self.cache = [];
-    }, this.interval);
-  };
-  AjaxLogger.prototype.end = function () {};
-
-  // wait until jQuery is defined. Useful if you don't control the load order.
-  AjaxLogger.jQueryWait = function (onDone) {
-    if (typeof window !== 'undefined' && (window.jQuery || window.$)) {
-      return onDone(window.jQuery || window.$);
-    } else if (typeof window !== 'undefined') {
-      setTimeout(function () {
-        AjaxLogger.jQueryWait(onDone);
-      }, 200);
-    }
-  };
-  jquery_simple = AjaxLogger;
-  return jquery_simple;
-}
-
-var hasRequiredWeb;
-function requireWeb() {
-  if (hasRequiredWeb) return web.exports;
-  hasRequiredWeb = 1;
-  (function (module, exports) {
-    var Minilog = requireMinilog$1();
-    var oldEnable = Minilog.enable,
-      oldDisable = Minilog.disable,
-      isChrome = typeof navigator != 'undefined' && /chrome/i.test(navigator.userAgent),
-      console = requireConsole();
-
-    // Use a more capable logging backend if on Chrome
-    Minilog.defaultBackend = isChrome ? console.minilog : console;
-
-    // apply enable inputs from localStorage and from the URL
-    if (typeof window != 'undefined') {
-      try {
-        Minilog.enable(JSON.parse(window.localStorage['minilogSettings']));
-      } catch (e) {}
-      if (window.location && window.location.search) {
-        var match = RegExp('[?&]minilog=([^&]*)').exec(window.location.search);
-        match && Minilog.enable(decodeURIComponent(match[1]));
-      }
-    }
-
-    // Make enable also add to localStorage
-    Minilog.enable = function () {
-      oldEnable.call(Minilog, true);
-      try {
-        window.localStorage['minilogSettings'] = JSON.stringify(true);
-      } catch (e) {}
-      return this;
-    };
-    Minilog.disable = function () {
-      oldDisable.call(Minilog);
-      try {
-        delete window.localStorage.minilogSettings;
-      } catch (e) {}
-      return this;
-    };
-    exports = module.exports = Minilog;
-    exports.backends = {
-      array: requireArray(),
-      browser: Minilog.defaultBackend,
-      localStorage: requireLocalstorage(),
-      jQuery: requireJquery_simple()
-    };
-  })(web, web.exports);
-  return web.exports;
-}
-
-var log;
-var hasRequiredLog;
-function requireLog() {
-  if (hasRequiredLog) return log;
-  hasRequiredLog = 1;
-  var minilog = requireWeb();
-  minilog.enable();
-  log = minilog('vm');
-  return log;
-}
-
-requireLog();
-
 var en = {
-	"samlabs.name": "SAM Labs"
+	"samlabs.name": "SAM Labs",
+	"sambot.name": "Baby SAM Bot"
 };
 var translations = {
 	en: en
 };
 
-var _require = require('./device'),
-  SamLabsBLE = _require.SamLabsBLE,
-  SAMDevice = _require.SAMDevice;
+function _arrayWithHoles(r) {
+  if (Array.isArray(r)) return r;
+}
+
+function _iterableToArrayLimit(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e,
+      n,
+      i,
+      u,
+      a = [],
+      f = true,
+      o = false;
+    try {
+      if (i = (t = t.call(r)).next, 0 === l) ; else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+    } catch (r) {
+      o = true, n = r;
+    } finally {
+      try {
+        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
+      }
+    }
+    return a;
+  }
+}
+
+function _arrayLikeToArray(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
+}
+
+function _unsupportedIterableToArray(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
+  }
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _slicedToArray(r, e) {
+  return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest();
+}
+
+function _classCallCheck(a, n) {
+  if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function");
+}
+
+function _typeof(o) {
+  "@babel/helpers - typeof";
+
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, _typeof(o);
+}
+
+function toPrimitive(t, r) {
+  if ("object" != _typeof(t) || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r);
+    if ("object" != _typeof(i)) return i;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (String )(t);
+}
+
+function toPropertyKey(t) {
+  var i = toPrimitive(t, "string");
+  return "symbol" == _typeof(i) ? i : i + "";
+}
+
+function _defineProperties(e, r) {
+  for (var t = 0; t < r.length; t++) {
+    var o = r[t];
+    o.enumerable = o.enumerable || false, o.configurable = true, "value" in o && (o.writable = true), Object.defineProperty(e, toPropertyKey(o.key), o);
+  }
+}
+function _createClass(e, r, t) {
+  return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", {
+    writable: false
+  }), e;
+}
+
+function _assertThisInitialized(e) {
+  if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  return e;
+}
+
+function _possibleConstructorReturn(t, e) {
+  if (e && ("object" == _typeof(e) || "function" == typeof e)) return e;
+  if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined");
+  return _assertThisInitialized(t);
+}
+
+function _getPrototypeOf(t) {
+  return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) {
+    return t.__proto__ || Object.getPrototypeOf(t);
+  }, _getPrototypeOf(t);
+}
+
+function _setPrototypeOf(t, e) {
+  return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) {
+    return t.__proto__ = e, t;
+  }, _setPrototypeOf(t, e);
+}
+
+function _inherits(t, e) {
+  if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function");
+  t.prototype = Object.create(e && e.prototype, {
+    constructor: {
+      value: t,
+      writable: true,
+      configurable: true
+    }
+  }), Object.defineProperty(t, "prototype", {
+    writable: false
+  }), e && _setPrototypeOf(t, e);
+}
+
+var jsonrpc;
+var hasRequiredJsonrpc;
+function requireJsonrpc() {
+  if (hasRequiredJsonrpc) return jsonrpc;
+  hasRequiredJsonrpc = 1;
+  var JSONRPC = /*#__PURE__*/function () {
+    function JSONRPC() {
+      _classCallCheck(this, JSONRPC);
+      this._requestID = 0;
+      this._openRequests = {};
+    }
+
+    /**
+     * Make an RPC request and retrieve the result.
+     * @param {string} method - the remote method to call.
+     * @param {object} params - the parameters to pass to the remote method.
+     * @returns {Promise} - a promise for the result of the call.
+     */
+    return _createClass(JSONRPC, [{
+      key: "sendRemoteRequest",
+      value: function sendRemoteRequest(method, params) {
+        var _this = this;
+        var requestID = this._requestID++;
+        var promise = new Promise(function (resolve, reject) {
+          _this._openRequests[requestID] = {
+            resolve: resolve,
+            reject: reject
+          };
+        });
+        this._sendRequest(method, params, requestID);
+        return promise;
+      }
+
+      /**
+       * Make an RPC notification with no expectation of a result or callback.
+       * @param {string} method - the remote method to call.
+       * @param {object} params - the parameters to pass to the remote method.
+       */
+    }, {
+      key: "sendRemoteNotification",
+      value: function sendRemoteNotification(method, params) {
+        this._sendRequest(method, params);
+      }
+
+      /**
+       * Handle an RPC request from remote, should return a result or Promise for result, if appropriate.
+       * @param {string} method - the method requested by the remote caller.
+       * @param {object} params - the parameters sent with the remote caller's request.
+       */
+    }, {
+      key: "didReceiveCall",
+      value: function didReceiveCall(/* method , params */
+      ) {
+        throw new Error('Must override didReceiveCall');
+      }
+    }, {
+      key: "_sendMessage",
+      value: function _sendMessage(/* jsonMessageObject */
+      ) {
+        throw new Error('Must override _sendMessage');
+      }
+    }, {
+      key: "_sendRequest",
+      value: function _sendRequest(method, params, id) {
+        var request = {
+          jsonrpc: '2.0',
+          method: method,
+          params: params
+        };
+        if (id !== null) {
+          request.id = id;
+        }
+        this._sendMessage(request);
+      }
+    }, {
+      key: "_handleMessage",
+      value: function _handleMessage(json) {
+        if (json.jsonrpc !== '2.0') {
+          throw new Error("Bad or missing JSON-RPC version in message: ".concat(json));
+        }
+        if (Object.prototype.hasOwnProperty.call(json, 'method')) {
+          this._handleRequest(json);
+        } else {
+          this._handleResponse(json);
+        }
+      }
+    }, {
+      key: "_sendResponse",
+      value: function _sendResponse(id, result, error) {
+        var response = {
+          jsonrpc: '2.0',
+          id: id
+        };
+        if (error) {
+          response.error = error;
+        } else {
+          response.result = result || null;
+        }
+        this._sendMessage(response);
+      }
+    }, {
+      key: "_handleResponse",
+      value: function _handleResponse(json) {
+        var result = json.result,
+          error = json.error,
+          id = json.id;
+        var openRequest = this._openRequests[id];
+        delete this._openRequests[id];
+        if (openRequest) {
+          if (error) {
+            openRequest.reject(error);
+          } else {
+            openRequest.resolve(result);
+          }
+        }
+      }
+    }, {
+      key: "_handleRequest",
+      value: function _handleRequest(json) {
+        var _this2 = this;
+        var method = json.method,
+          params = json.params,
+          id = json.id;
+        var rawResult = this.didReceiveCall(method, params);
+        if (id !== null && typeof id !== 'undefined') {
+          Promise.resolve(rawResult).then(function (result) {
+            _this2._sendResponse(id, result);
+          }, function (error) {
+            _this2._sendResponse(id, null, error);
+          });
+        }
+      }
+    }]);
+  }();
+  jsonrpc = JSONRPC;
+  return jsonrpc;
+}
+
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+var ble;
+var hasRequiredBle;
+function requireBle() {
+  if (hasRequiredBle) return ble;
+  hasRequiredBle = 1;
+  var JSONRPC = requireJsonrpc();
+  var BLE = /*#__PURE__*/function (_JSONRPC) {
+    /**
+     * A BLE peripheral socket object.  It handles connecting, over web sockets, to
+     * BLE peripherals, and reading and writing data to them.
+     * @param {Runtime} runtime - the Runtime for sending/receiving GUI update events.
+     * @param {string} extensionId - the id of the extension using this socket.
+     * @param {object} peripheralOptions - the list of options for peripheral discovery.
+     * @param {object} connectCallback - a callback for connection.
+     * @param {object} resetCallback - a callback for resetting extension state.
+     */
+    function BLE(runtime, extensionId, peripheralOptions, connectCallback) {
+      var _this;
+      var resetCallback = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+      _classCallCheck(this, BLE);
+      _this = _callSuper(this, BLE);
+      _this._socket = runtime.getScratchLinkSocket('BLE');
+      _this._socket.setOnOpen(_this.requestPeripheral.bind(_this));
+      _this._socket.setOnClose(_this.handleDisconnectError.bind(_this));
+      _this._socket.setOnError(_this._handleRequestError.bind(_this));
+      _this._socket.setHandleMessage(_this._handleMessage.bind(_this));
+      _this._sendMessage = _this._socket.sendMessage.bind(_this._socket);
+      _this._availablePeripherals = {};
+      _this._connectCallback = connectCallback;
+      _this._connected = false;
+      _this._characteristicDidChangeCallback = null;
+      _this._resetCallback = resetCallback;
+      _this._discoverTimeoutID = null;
+      _this._extensionId = extensionId;
+      _this._peripheralOptions = peripheralOptions;
+      _this._runtime = runtime;
+      _this._socket.open();
+      return _this;
+    }
+
+    /**
+     * Request connection to the peripheral.
+     * If the web socket is not yet open, request when the socket promise resolves.
+     */
+    _inherits(BLE, _JSONRPC);
+    return _createClass(BLE, [{
+      key: "requestPeripheral",
+      value: function requestPeripheral() {
+        var _this2 = this;
+        this._availablePeripherals = {};
+        if (this._discoverTimeoutID) {
+          window.clearTimeout(this._discoverTimeoutID);
+        }
+        this._discoverTimeoutID = window.setTimeout(this._handleDiscoverTimeout.bind(this), 15000);
+        this.sendRemoteRequest('discover', this._peripheralOptions).catch(function (e) {
+          _this2._handleRequestError(e);
+        });
+      }
+
+      /**
+       * Try connecting to the input peripheral id, and then call the connect
+       * callback if connection is successful.
+       * @param {number} id - the id of the peripheral to connect to
+       */
+    }, {
+      key: "connectPeripheral",
+      value: function connectPeripheral(id) {
+        var _this3 = this;
+        this.sendRemoteRequest('connect', {
+          peripheralId: id
+        }).then(function () {
+          _this3._connected = true;
+          _this3._runtime.emit(_this3._runtime.constructor.PERIPHERAL_CONNECTED);
+          _this3._connectCallback();
+        }).catch(function (e) {
+          _this3._handleRequestError(e);
+        });
+      }
+
+      /**
+       * Close the websocket.
+       */
+    }, {
+      key: "disconnect",
+      value: function disconnect() {
+        if (this._connected) {
+          this._connected = false;
+        }
+        if (this._socket.isOpen()) {
+          this._socket.close();
+        }
+        if (this._discoverTimeoutID) {
+          window.clearTimeout(this._discoverTimeoutID);
+        }
+
+        // Sets connection status icon to orange
+        this._runtime.emit(this._runtime.constructor.PERIPHERAL_DISCONNECTED);
+      }
+
+      /**
+       * @return {bool} whether the peripheral is connected.
+       */
+    }, {
+      key: "isConnected",
+      value: function isConnected() {
+        return this._connected;
+      }
+
+      /**
+       * Start receiving notifications from the specified ble service.
+       * @param {number} serviceId - the ble service to read.
+       * @param {number} characteristicId - the ble characteristic to get notifications from.
+       * @param {object} onCharacteristicChanged - callback for characteristic change notifications.
+       * @return {Promise} - a promise from the remote startNotifications request.
+       */
+    }, {
+      key: "startNotifications",
+      value: function startNotifications(serviceId, characteristicId) {
+        var _this4 = this;
+        var onCharacteristicChanged = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+        var params = {
+          serviceId: serviceId,
+          characteristicId: characteristicId
+        };
+        this._characteristicDidChangeCallback = onCharacteristicChanged;
+        return this.sendRemoteRequest('startNotifications', params).catch(function (e) {
+          _this4.handleDisconnectError(e);
+        });
+      }
+
+      /**
+       * Read from the specified ble service.
+       * @param {number} serviceId - the ble service to read.
+       * @param {number} characteristicId - the ble characteristic to read.
+       * @param {boolean} optStartNotifications - whether to start receiving characteristic change notifications.
+       * @param {object} onCharacteristicChanged - callback for characteristic change notifications.
+       * @return {Promise} - a promise from the remote read request.
+       */
+    }, {
+      key: "read",
+      value: function read(serviceId, characteristicId) {
+        var _this5 = this;
+        var optStartNotifications = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+        var onCharacteristicChanged = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+        var params = {
+          serviceId: serviceId,
+          characteristicId: characteristicId
+        };
+        if (optStartNotifications) {
+          params.startNotifications = true;
+        }
+        if (onCharacteristicChanged) {
+          this._characteristicDidChangeCallback = onCharacteristicChanged;
+        }
+        return this.sendRemoteRequest('read', params).catch(function (e) {
+          _this5.handleDisconnectError(e);
+        });
+      }
+
+      /**
+       * Write data to the specified ble service.
+       * @param {number} serviceId - the ble service to write.
+       * @param {number} characteristicId - the ble characteristic to write.
+       * @param {string} message - the message to send.
+       * @param {string} encoding - the message encoding type.
+       * @param {boolean} withResponse - if true, resolve after peripheral's response.
+       * @return {Promise} - a promise from the remote send request.
+       */
+    }, {
+      key: "write",
+      value: function write(serviceId, characteristicId, message) {
+        var _this6 = this;
+        var encoding = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+        var withResponse = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
+        var params = {
+          serviceId: serviceId,
+          characteristicId: characteristicId,
+          message: message
+        };
+        if (encoding) {
+          params.encoding = encoding;
+        }
+        if (withResponse !== null) {
+          params.withResponse = withResponse;
+        }
+        return this.sendRemoteRequest('write', params).catch(function (e) {
+          _this6.handleDisconnectError(e);
+        });
+      }
+
+      /**
+       * Handle a received call from the socket.
+       * @param {string} method - a received method label.
+       * @param {object} params - a received list of parameters.
+       * @return {object} - optional return value.
+       */
+    }, {
+      key: "didReceiveCall",
+      value: function didReceiveCall(method, params) {
+        switch (method) {
+          case 'didDiscoverPeripheral':
+            this._availablePeripherals[params.peripheralId] = params;
+            this._runtime.emit(this._runtime.constructor.PERIPHERAL_LIST_UPDATE, this._availablePeripherals);
+            if (this._discoverTimeoutID) {
+              window.clearTimeout(this._discoverTimeoutID);
+            }
+            break;
+          case 'userDidPickPeripheral':
+            this._availablePeripherals[params.peripheralId] = params;
+            this._runtime.emit(this._runtime.constructor.USER_PICKED_PERIPHERAL, this._availablePeripherals);
+            if (this._discoverTimeoutID) {
+              window.clearTimeout(this._discoverTimeoutID);
+            }
+            break;
+          case 'userDidNotPickPeripheral':
+            this._runtime.emit(this._runtime.constructor.PERIPHERAL_SCAN_TIMEOUT);
+            if (this._discoverTimeoutID) {
+              window.clearTimeout(this._discoverTimeoutID);
+            }
+            break;
+          case 'characteristicDidChange':
+            if (this._characteristicDidChangeCallback) {
+              this._characteristicDidChangeCallback(params.message);
+            }
+            break;
+          case 'ping':
+            return 42;
+        }
+      }
+
+      /**
+       * Handle an error resulting from losing connection to a peripheral.
+       *
+       * This could be due to:
+       * - battery depletion
+       * - going out of bluetooth range
+       * - being powered down
+       *
+       * Disconnect the socket, and if the extension using this socket has a
+       * reset callback, call it. Finally, emit an error to the runtime.
+       */
+    }, {
+      key: "handleDisconnectError",
+      value: function handleDisconnectError(/* e */
+      ) {
+        // log.error(`BLE error: ${JSON.stringify(e)}`);
+
+        if (!this._connected) return;
+        this.disconnect();
+        if (this._resetCallback) {
+          this._resetCallback();
+        }
+        this._runtime.emit(this._runtime.constructor.PERIPHERAL_CONNECTION_LOST_ERROR, {
+          message: "Scratch lost connection to",
+          extensionId: this._extensionId
+        });
+      }
+    }, {
+      key: "_handleRequestError",
+      value: function _handleRequestError(/* e */
+      ) {
+        // log.error(`BLE error: ${JSON.stringify(e)}`);
+
+        this._runtime.emit(this._runtime.constructor.PERIPHERAL_REQUEST_ERROR, {
+          message: "Scratch lost connection to",
+          extensionId: this._extensionId
+        });
+      }
+    }, {
+      key: "_handleDiscoverTimeout",
+      value: function _handleDiscoverTimeout() {
+        if (this._discoverTimeoutID) {
+          window.clearTimeout(this._discoverTimeoutID);
+        }
+        this._runtime.emit(this._runtime.constructor.PERIPHERAL_SCAN_TIMEOUT);
+      }
+    }]);
+  }(JSONRPC);
+  ble = BLE;
+  return ble;
+}
+
+var browserAtob = {exports: {}};
+
+var hasRequiredBrowserAtob;
+function requireBrowserAtob() {
+  if (hasRequiredBrowserAtob) return browserAtob.exports;
+  hasRequiredBrowserAtob = 1;
+  (function (module) {
+    (function (w) {
+
+      function findBest(atobNative) {
+        // normal window
+        if ('function' === typeof atobNative) {
+          return atobNative;
+        }
+
+        // browserify (web worker)
+        if ('function' === typeof Buffer) {
+          return function atobBrowserify(a) {
+            //!! Deliberately using an API that's deprecated in node.js because
+            //!! this file is for browsers and we expect them to cope with it.
+            //!! Discussion: github.com/node-browser-compat/atob/pull/9
+            return new Buffer(a, 'base64').toString('binary');
+          };
+        }
+
+        // ios web worker with base64js
+        if ('object' === _typeof(w.base64js)) {
+          // bufferToBinaryString
+          // https://git.coolaj86.com/coolaj86/unibabel.js/blob/master/index.js#L50
+          return function atobWebWorker_iOS(a) {
+            var buf = w.base64js.b64ToByteArray(a);
+            return Array.prototype.map.call(buf, function (ch) {
+              return String.fromCharCode(ch);
+            }).join('');
+          };
+        }
+        return function () {
+          // ios web worker without base64js
+          throw new Error("You're probably in an old browser or an iOS webworker." + " It might help to include beatgammit's base64-js.");
+        };
+      }
+      var atobBest = findBest(w.atob);
+      w.atob = atobBest;
+      if (module && module.exports) {
+        module.exports = atobBest;
+      }
+    })(window);
+  })(browserAtob);
+  return browserAtob.exports;
+}
+
+var btoa = {exports: {}};
+
+var hasRequiredBtoa;
+function requireBtoa() {
+  if (hasRequiredBtoa) return btoa.exports;
+  hasRequiredBtoa = 1;
+  (function () {
+
+    function btoa$1(str) {
+      var buffer;
+      if (str instanceof Buffer) {
+        buffer = str;
+      } else {
+        buffer = Buffer.from(str.toString(), 'binary');
+      }
+      return buffer.toString('base64');
+    }
+    btoa.exports = btoa$1;
+  })();
+  return btoa.exports;
+}
+
+var base64Util;
+var hasRequiredBase64Util;
+function requireBase64Util() {
+  if (hasRequiredBase64Util) return base64Util;
+  hasRequiredBase64Util = 1;
+  var atob = requireBrowserAtob();
+  var btoa = requireBtoa();
+  var Base64Util = /*#__PURE__*/function () {
+    function Base64Util() {
+      _classCallCheck(this, Base64Util);
+    }
+    return _createClass(Base64Util, null, [{
+      key: "base64ToUint8Array",
+      value:
+      /**
+       * Convert a base64 encoded string to a Uint8Array.
+       * @param {string} base64 - a base64 encoded string.
+       * @return {Uint8Array} - a decoded Uint8Array.
+       */
+      function base64ToUint8Array(base64) {
+        var binaryString = atob(base64);
+        var len = binaryString.length;
+        var array = new Uint8Array(len);
+        for (var i = 0; i < len; i++) {
+          array[i] = binaryString.charCodeAt(i);
+        }
+        return array;
+      }
+
+      /**
+       * Convert a Uint8Array to a base64 encoded string.
+       * @param {Uint8Array} array - the array to convert.
+       * @return {string} - the base64 encoded string.
+       */
+    }, {
+      key: "uint8ArrayToBase64",
+      value: function uint8ArrayToBase64(array) {
+        var base64 = btoa(String.fromCharCode.apply(null, array));
+        return base64;
+      }
+
+      /**
+      * Convert an array buffer to a base64 encoded string.
+      * @param {array} buffer - an array buffer to convert.
+      * @return {string} - the base64 encoded string.
+      */
+    }, {
+      key: "arrayBufferToBase64",
+      value: function arrayBufferToBase64(buffer) {
+        var binary = '';
+        var bytes = new Uint8Array(buffer);
+        var len = bytes.byteLength;
+        for (var i = 0; i < len; i++) {
+          binary += String.fromCharCode(bytes[i]);
+        }
+        return btoa(binary);
+      }
+    }]);
+  }();
+  base64Util = Base64Util;
+  return base64Util;
+}
+
+var timer;
+var hasRequiredTimer;
+function requireTimer() {
+  if (hasRequiredTimer) return timer;
+  hasRequiredTimer = 1;
+  var Timer = /*#__PURE__*/function () {
+    function Timer() {
+      var nowObj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : Timer.nowObj;
+      _classCallCheck(this, Timer);
+      /**
+       * Used to store the start time of a timer action.
+       * Updated when calling `timer.start`.
+       */
+      this.startTime = 0;
+
+      /**
+       * Used to pass custom logic for determining the value for "now",
+       * which is sometimes useful for compatibility with Scratch 2
+       */
+      this.nowObj = nowObj;
+    }
+
+    /**
+     * Disable use of self.performance for now as it results in lower performance
+     * However, instancing it like below (caching the self.performance to a local variable) negates most of the issues.
+     * @type {boolean}
+     */
+    return _createClass(Timer, [{
+      key: "time",
+      value:
+      /**
+       * Return the currently known absolute time, in ms precision.
+       * @returns {number} ms elapsed since 1 January 1970 00:00:00 UTC.
+       */
+      function time() {
+        return this.nowObj.now();
+      }
+
+      /**
+       * Start a timer for measuring elapsed time,
+       * at the most accurate precision possible.
+       */
+    }, {
+      key: "start",
+      value: function start() {
+        this.startTime = this.nowObj.now();
+      }
+    }, {
+      key: "timeElapsed",
+      value: function timeElapsed() {
+        return this.nowObj.now() - this.startTime;
+      }
+
+      /**
+       * Call a handler function after a specified amount of time has elapsed.
+       * @param {function} handler - function to call after the timeout
+       * @param {number} timeout - number of milliseconds to delay before calling the handler
+       * @returns {number} - the ID of the new timeout
+       */
+    }, {
+      key: "setTimeout",
+      value: function setTimeout(handler, timeout) {
+        return commonjsGlobal.setTimeout(handler, timeout);
+      }
+
+      /**
+       * Clear a timeout from the pending timeout pool.
+       * @param {number} timeoutId - the ID returned by `setTimeout()`
+       * @memberof Timer
+       */
+    }, {
+      key: "clearTimeout",
+      value: function clearTimeout(timeoutId) {
+        commonjsGlobal.clearTimeout(timeoutId);
+      }
+    }], [{
+      key: "USE_PERFORMANCE",
+      get: function get() {
+        return false;
+      }
+
+      /**
+       * Legacy object to allow for us to call now to get the old style date time (for backwards compatibility)
+       * @deprecated This is only called via the nowObj.now() if no other means is possible...
+       */
+    }, {
+      key: "legacyDateCode",
+      get: function get() {
+        return {
+          now: function now() {
+            return new Date().getTime();
+          }
+        };
+      }
+
+      /**
+       * Use this object to route all time functions through single access points.
+       */
+    }, {
+      key: "nowObj",
+      get: function get() {
+        if (Timer.USE_PERFORMANCE && typeof self !== 'undefined' && self.performance && 'now' in self.performance) {
+          return self.performance;
+        } else if (Date.now) {
+          return Date;
+        }
+        return Timer.legacyDateCode;
+      }
+    }]);
+  }();
+  timer = Timer;
+  return timer;
+}
+
+var rateLimiter;
+var hasRequiredRateLimiter;
+function requireRateLimiter() {
+  if (hasRequiredRateLimiter) return rateLimiter;
+  hasRequiredRateLimiter = 1;
+  var Timer = requireTimer();
+  var RateLimiter = /*#__PURE__*/function () {
+    /**
+     * A utility for limiting the rate of repetitive send operations, such as
+     * bluetooth messages being sent to hardware devices. It uses the token bucket
+     * strategy: a counter accumulates tokens at a steady rate, and each send costs
+     * a token. If no tokens remain, it's not okay to send.
+     * @param {number} maxRate the maximum number of sends allowed per second
+     * @constructor
+     */
+    function RateLimiter(maxRate) {
+      _classCallCheck(this, RateLimiter);
+      /**
+       * The maximum number of tokens.
+       * @type {number}
+       */
+      this._maxTokens = maxRate;
+
+      /**
+       * The interval in milliseconds for refilling one token. It is calculated
+       * so that the tokens will be filled to maximum in one second.
+       * @type {number}
+       */
+      this._refillInterval = 1000 / maxRate;
+
+      /**
+       * The current number of tokens in the bucket.
+       * @type {number}
+       */
+      this._count = this._maxTokens;
+      this._timer = new Timer();
+      this._timer.start();
+
+      /**
+       * The last time in milliseconds when the token count was updated.
+       * @type {number}
+       */
+      this._lastUpdateTime = this._timer.timeElapsed();
+    }
+
+    /**
+     * Check if it is okay to send a message, by updating the token count,
+     * taking a token and then checking if we are still under the rate limit.
+     * @return {boolean} true if we are under the rate limit
+     */
+    return _createClass(RateLimiter, [{
+      key: "okayToSend",
+      value: function okayToSend() {
+        // Calculate the number of tokens to refill the bucket with, based on the
+        // amount of time since the last refill.
+        var now = this._timer.timeElapsed();
+        var timeSinceRefill = now - this._lastUpdateTime;
+        var refillCount = Math.floor(timeSinceRefill / this._refillInterval);
+
+        // If we're adding at least one token, reset _lastUpdateTime to now.
+        // Otherwise, don't reset it so that we can continue measuring time until
+        // the next refill.
+        if (refillCount > 0) {
+          this._lastUpdateTime = now;
+        }
+
+        // Refill the tokens up to the maximum
+        this._count = Math.min(this._maxTokens, this._count + refillCount);
+
+        // If we have at least one token, use one, and it's okay to send.
+        if (this._count > 0) {
+          this._count--;
+          return true;
+        }
+        return false;
+      }
+    }]);
+  }();
+  rateLimiter = RateLimiter;
+  return rateLimiter;
+}
+
+var device;
+var hasRequiredDevice;
+function requireDevice() {
+  if (hasRequiredDevice) return device;
+  hasRequiredDevice = 1;
+  var BLE = requireBle();
+  var Base64Util = requireBase64Util();
+  var RateLimiter = requireRateLimiter();
+  var SamLabsBLE = {
+    battServ: '0000180f-0000-1000-8000-00805f9b34fb',
+    batteryLevelCharacteristic: '00002a19-0000-1000-8000-00805f9b34fb',
+    SAMServ: '3b989460-975f-11e4-a9fb-0002a5d5c51b',
+    SensorCharacteristic: '4c592e60-980c-11e4-959a-0002a5d5c51b',
+    ActorCharacteristic: '84fc1520-980c-11e4-8bed-0002a5d5c51b',
+    StatusLedCharacteristic: '5baab0a0-980c-11e4-b5e9-0002a5d5c51b',
+    SAMBotCommandCharacteristic: 'abcd1234-1234-1234-1234-0002a5d5c51b',
+    sendInterval: 50,
+    sendRateMax: 20
+  };
+  var BabyBotIndex = 1;
+  var DeviceTypes = [{
+    name: 'undefined',
+    advName: ''
+  }, {
+    name: 'Baby SAM Bot',
+    advName: 'SAM BabyBot'
+  }, {
+    name: 'slider',
+    advName: 'SAM Potentiometer'
+  }, {
+    name: 'light sensor',
+    advName: 'SAM LDR'
+  }, {
+    name: 'button',
+    advName: 'SAM Button'
+  }, {
+    name: 'proximity',
+    advName: 'SAM IR Sensor'
+  }, {
+    name: 'heat',
+    advName: 'SAM Temperature'
+  }, {
+    name: 'tilt',
+    advName: 'SAM Tilt'
+  }, {
+    name: 'pressure',
+    advName: 'SAM Pressure'
+  }, {
+    name: 'RGB led',
+    advName: 'SAM RGB LED'
+  }, {
+    name: 'DC motor',
+    advName: 'SAM DC Motor'
+  }, {
+    name: 'servo',
+    advName: 'SAM Servo Motor'
+  }];
+  var SAMDevice = /*#__PURE__*/function () {
+    /**
+     * constructor
+     * @param {Runtime} runtime Scratch runtime object
+     * @param {string} id extension id
+     */
+    function SAMDevice(runtime, id) {
+      _classCallCheck$1(this, SAMDevice);
+      _defineProperty(this, "id", '');
+      /**
+       * @type {BluetoothDevice | Object}
+       */
+      _defineProperty(this, "device", void 0);
+      _defineProperty(this, "typeId", 0);
+      _defineProperty(this, "deviceType", DeviceTypes[0]);
+      _defineProperty(this, "displayName", "".concat(DeviceTypes[0].name, " 1"));
+      _defineProperty(this, "sameDevices", 1);
+      _defineProperty(this, "SensorAvailable", false);
+      _defineProperty(this, "ActorAvailable", false);
+      _defineProperty(this, "SAMBotAvailable", false);
+      /**
+       * @type {BluetoothRemoteGATTCharacteristic}
+       */
+      _defineProperty(this, "batteryLevelCharacteristic", void 0);
+      /**
+       * @type {BluetoothRemoteGATTCharacteristic}
+       */
+      _defineProperty(this, "SAMSensorCharacteristic", void 0);
+      /**
+       * @type {BluetoothRemoteGATTCharacteristic}
+       */
+      _defineProperty(this, "SAMActorCharacteristic", void 0);
+      /**
+       * @type {BluetoothRemoteGATTCharacteristic}
+       */
+      _defineProperty(this, "SAMBotCharacteristic", void 0);
+      /**
+       * @type {BluetoothRemoteGATTCharacteristic}
+       */
+      _defineProperty(this, "SAMStatusLEDCharacteristic", void 0);
+      _defineProperty(this, "value", 0);
+      _defineProperty(this, "battery", 0);
+      /**
+       * @type {BLE}
+       */
+      _defineProperty(this, "_ble", null);
+      /**
+       * @type {Runtime}
+       */
+      _defineProperty(this, "_runtime", null);
+      this._rateLimiter = new RateLimiter(SamLabsBLE.sendRateMax);
+      this._runtime = runtime;
+      this.extID = id;
+      if (navigator.bluetooth) {
+        this.webBLE = true;
+      }
+      this._runtime.on(this._runtime.constructor.PERIPHERAL_SCAN_TIMEOUT, this.discoverTimeout.bind(this));
+    }
+    return _createClass$1(SAMDevice, [{
+      key: "connectToDevice",
+      value: function () {
+        var _connectToDevice = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee(deviceMap, options) {
+          return _regeneratorRuntime.wrap(function _callee$(_context) {
+            while (1) switch (_context.prev = _context.next) {
+              case 0:
+                this.deviceMap = deviceMap;
+                _context.prev = 1;
+                if (!this.webBLE) {
+                  _context.next = 9;
+                  break;
+                }
+                _context.next = 5;
+                return this.connectWebBLE(options);
+              case 5:
+                if (_context.sent) {
+                  _context.next = 7;
+                  break;
+                }
+                return _context.abrupt("return", false);
+              case 7:
+                _context.next = 13;
+                break;
+              case 9:
+                _context.next = 11;
+                return this.connectScratchLink(options);
+              case 11:
+                if (_context.sent) {
+                  _context.next = 13;
+                  break;
+                }
+                return _context.abrupt("return", false);
+              case 13:
+                this.writeStatusLed(new Uint8Array([255, 255, 255]));
+                return _context.abrupt("return", true);
+              case 17:
+                _context.prev = 17;
+                _context.t0 = _context["catch"](1);
+                console.log(_context.t0);
+                return _context.abrupt("return", false);
+              case 21:
+              case "end":
+                return _context.stop();
+            }
+          }, _callee, this, [[1, 17]]);
+        }));
+        function connectToDevice(_x, _x2) {
+          return _connectToDevice.apply(this, arguments);
+        }
+        return connectToDevice;
+      }()
+    }, {
+      key: "connectWebBLE",
+      value: function () {
+        var _connectWebBLE = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee2(options) {
+          var _this = this;
+          var device, server, battServ, SAMServ, sameDevices;
+          return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return navigator.bluetooth.requestDevice(options);
+              case 2:
+                device = _context2.sent;
+                this.device = device;
+                console.log('Device found:', this.device);
+                this.device.addEventListener('gattserverdisconnected', function () {
+                  return _this.onDisconnected();
+                });
+
+                // Connect to the GATT server
+                _context2.next = 8;
+                return this.device.gatt.connect();
+              case 8:
+                server = _context2.sent;
+                console.log('Connected to GATT Server:', server);
+                // Get the Battery Service
+                _context2.next = 12;
+                return server.getPrimaryService(SamLabsBLE.battServ);
+              case 12:
+                battServ = _context2.sent;
+                _context2.next = 15;
+                return battServ.getCharacteristic(SamLabsBLE.batteryLevelCharacteristic);
+              case 15:
+                this.batteryLevelCharacteristic = _context2.sent;
+                console.log('Found battery characteristic');
+                _context2.next = 19;
+                return server.getPrimaryService(SamLabsBLE.SAMServ);
+              case 19:
+                SAMServ = _context2.sent;
+                this.SAMSensorCharacteristic = null;
+                this.SensorAvailable = true;
+                _context2.prev = 22;
+                _context2.next = 25;
+                return SAMServ.getCharacteristic(SamLabsBLE.SensorCharacteristic);
+              case 25:
+                this.SAMSensorCharacteristic = _context2.sent;
+                console.log('Found sensor characteristic');
+                _context2.next = 33;
+                break;
+              case 29:
+                _context2.prev = 29;
+                _context2.t0 = _context2["catch"](22);
+                console.log('Sensor characteristic not found');
+                this.SensorAvailable = false;
+              case 33:
+                this.SAMActorCharacteristic = null;
+                this.ActorAvailable = true;
+                _context2.prev = 35;
+                _context2.next = 38;
+                return SAMServ.getCharacteristic(SamLabsBLE.ActorCharacteristic);
+              case 38:
+                this.SAMActorCharacteristic = _context2.sent;
+                console.log('Found actor characteristic');
+                _context2.next = 46;
+                break;
+              case 42:
+                _context2.prev = 42;
+                _context2.t1 = _context2["catch"](35);
+                console.log('Actor characteristic not found');
+                this.ActorAvailable = false;
+              case 46:
+                this.SAMBotCharacteristic = null;
+                this.SAMBotAvailable = device.name === 'SAM BabyBot';
+                if (!this.SAMBotAvailable) {
+                  _context2.next = 59;
+                  break;
+                }
+                _context2.prev = 49;
+                _context2.next = 52;
+                return SAMServ.getCharacteristic(SamLabsBLE.SAMBotCommandCharacteristic);
+              case 52:
+                this.SAMBotCharacteristic = _context2.sent;
+                console.log('Found samBot characteristic');
+                _context2.next = 59;
+                break;
+              case 56:
+                _context2.prev = 56;
+                _context2.t2 = _context2["catch"](49);
+                console.log('samBot characteristic not found');
+              case 59:
+                _context2.next = 61;
+                return SAMServ.getCharacteristic(SamLabsBLE.StatusLedCharacteristic);
+              case 61:
+                this.SAMStatusLEDCharacteristic = _context2.sent;
+                console.log('Found statusled characteristic');
+                sameDevices = 1;
+                this.deviceMap.forEach(function (value) {
+                  if (value.device.name === device.name) {
+                    sameDevices++;
+                  }
+                });
+                this.typeId = 0;
+                this.typeId = 0;
+              case 67:
+                if (!(this.typeId < DeviceTypes.length)) {
+                  _context2.next = 73;
+                  break;
+                }
+                if (!(DeviceTypes[this.typeId].advName === device.name)) {
+                  _context2.next = 70;
+                  break;
+                }
+                return _context2.abrupt("break", 73);
+              case 70:
+                this.typeId++;
+                _context2.next = 67;
+                break;
+              case 73:
+                if (this.typeId === DeviceTypes.length) {
+                  this.typeId = 0;
+                }
+                this.displayName = "".concat(DeviceTypes[this.typeId].name, " ").concat(sameDevices);
+                this.id = device.id;
+                this.deviceType = DeviceTypes[this.typeId];
+                this.sameDevices = sameDevices;
+                this.device = device;
+                if (!(this.SensorAvailable && !this.SAMBotAvailable)) {
+                  _context2.next = 90;
+                  break;
+                }
+                _context2.prev = 80;
+                _context2.next = 83;
+                return this.SAMSensorCharacteristic.startNotifications();
+              case 83:
+                this.SAMSensorCharacteristic.addEventListener('characteristicvaluechanged', this.handleSensorNotifications.bind(this));
+                console.log('subscribed to sensor events');
+                _context2.next = 90;
+                break;
+              case 87:
+                _context2.prev = 87;
+                _context2.t3 = _context2["catch"](80);
+                console.log('Failed to subscribe to sensor events:', _context2.t3);
+              case 90:
+                _context2.prev = 90;
+                _context2.next = 93;
+                return this.batteryLevelCharacteristic.startNotifications();
+              case 93:
+                this.batteryLevelCharacteristic.addEventListener('characteristicvaluechanged', this.handleBattChange.bind(this));
+                console.log('subscribed to battery events');
+                _context2.next = 100;
+                break;
+              case 97:
+                _context2.prev = 97;
+                _context2.t4 = _context2["catch"](90);
+                console.log('Failed to subscribe to battery events:', _context2.t4);
+              case 100:
+                console.log("Connected to ".concat(device.name || 'Unknown Device', ", id ").concat(device.id, ", sambot ").concat(this.SAMBotAvailable));
+                return _context2.abrupt("return", true);
+              case 102:
+              case "end":
+                return _context2.stop();
+            }
+          }, _callee2, this, [[22, 29], [35, 42], [49, 56], [80, 87], [90, 97]]);
+        }));
+        function connectWebBLE(_x3) {
+          return _connectWebBLE.apply(this, arguments);
+        }
+        return connectWebBLE;
+      }()
+    }, {
+      key: "addStyles",
+      value: function addStyles() {
+        var style = document.createElement('style');
+        style.innerHTML = "\n            #device-list-container {\n                position: fixed;\n                top: 20%;\n                left: 50%;\n                transform: translate(-50%, -20%);\n                background: white;\n                padding: 15px;\n                border-radius: 10px;\n                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);\n                width: 300px;\n                max-height: 400px;\n                overflow-y: auto;\n                z-index: 9999; /* Ensure it appears above Scratch */\n                font-family: Arial, sans-serif;\n            }\n    \n            #device-list-container h3 {\n                margin: 0;\n                padding-bottom: 10px;\n                text-align: center;\n                border-bottom: 1px solid #ccc;\n            }\n    \n            #device-list {\n                list-style: none;\n                padding: 0;\n                margin: 10px 0;\n            }\n    \n            #device-list li {\n                padding: 10px;\n                cursor: pointer;\n                background: #f9f9f9;\n                margin-bottom: 5px;\n                border-radius: 5px;\n                text-align: center;\n                transition: background 0.2s;\n            }\n    \n            #device-list li:hover {\n                background: #ddd;\n            }\n    \n            #close-device-list {\n                display: block;\n                width: 100%;\n                padding: 8px;\n                margin-top: 10px;\n                background: #ff4d4d;\n                color: white;\n                border: none;\n                border-radius: 5px;\n                cursor: pointer;\n                text-align: center;\n            }\n    \n            #close-device-list:hover {\n                background: #cc0000;\n            }\n        ";
+        document.head.appendChild(style);
+      }
+    }, {
+      key: "connectScratchLink",
+      value: function () {
+        var _connectScratchLink = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee3(options) {
+          var _this2 = this;
+          var container, _device, sameDevices;
+          return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+            while (1) switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                if (this._ble) {
+                  this._ble.disconnect();
+                }
+                this.discoverCancelled = false;
+                this._ble = new BLE(this._runtime, this.extID, options, this._onConnect.bind(this), this.reset);
+                this.discovering = true;
+
+                // Ensure styles are applied
+                this.addStyles();
+
+                // Create floating UI container
+                container = document.getElementById('device-list-container');
+                if (!container) {
+                  container = document.createElement('div');
+                  container.id = 'device-list-container';
+                  container.innerHTML = "\n                    <h3>Select a Device</h3>\n                    <ul id=\"device-list\"></ul>\n                    <button id=\"close-device-list\">Close</button>\n                ";
+                  document.body.appendChild(container);
+                  document.getElementById('close-device-list').onclick = function () {
+                    document.body.removeChild(container);
+                    _this2.discovering = false; // Stop discovery when closed
+                    _this2.discoverCancelled = true;
+                  };
+                }
+                _context3.next = 10;
+                return this.scanForDevices();
+              case 10:
+                if (!this.discoverCancelled) {
+                  _context3.next = 13;
+                  break;
+                }
+                this._ble.disconnect();
+                return _context3.abrupt("return", false);
+              case 13:
+                _device = this.device;
+                console.log(_device);
+                sameDevices = 1;
+                this.deviceMap.forEach(function (value) {
+                  if (value.device.name === _device.name) {
+                    sameDevices++;
+                  }
+                });
+                this.typeId = 0;
+                this.typeId = 0;
+              case 19:
+                if (!(this.typeId < DeviceTypes.length)) {
+                  _context3.next = 25;
+                  break;
+                }
+                if (!(DeviceTypes[this.typeId].advName === _device.name)) {
+                  _context3.next = 22;
+                  break;
+                }
+                return _context3.abrupt("break", 25);
+              case 22:
+                this.typeId++;
+                _context3.next = 19;
+                break;
+              case 25:
+                if (this.typeId === DeviceTypes.length) {
+                  this.typeId = 0;
+                }
+                this.displayName = "".concat(DeviceTypes[this.typeId].name, " ").concat(sameDevices);
+                this.id = String(_device.peripheralId);
+                this.deviceType = DeviceTypes[this.typeId];
+                this.sameDevices = sameDevices;
+                this.device = _device;
+                this.SAMBotAvailable = this.device.name === 'SAM BabyBot';
+                this.ActorAvailable = true;
+                this.SensorAvailable = true;
+              case 34:
+                if (this._ble.isConnected()) {
+                  _context3.next = 39;
+                  break;
+                }
+                _context3.next = 37;
+                return new Promise(function (resolve) {
+                  return setTimeout(resolve, 500);
+                });
+              case 37:
+                _context3.next = 34;
+                break;
+              case 39:
+                _context3.next = 44;
+                break;
+              case 41:
+                _context3.prev = 41;
+                _context3.t0 = _context3["catch"](0);
+                console.log(_context3.t0);
+              case 44:
+                return _context3.abrupt("return", true);
+              case 45:
+              case "end":
+                return _context3.stop();
+            }
+          }, _callee3, this, [[0, 41]]);
+        }));
+        function connectScratchLink(_x4) {
+          return _connectScratchLink.apply(this, arguments);
+        }
+        return connectScratchLink;
+      }()
+    }, {
+      key: "_onConnect",
+      value: function _onConnect() {
+        console.log('connected to device');
+        this._ble.startNotifications(SamLabsBLE.battServ, SamLabsBLE.batteryLevelCharacteristic, this.handleBattChange.bind(this));
+        this._ble.startNotifications(SamLabsBLE.SAMServ, SamLabsBLE.SensorCharacteristic, this.handleSensorNotifications.bind(this));
+      }
+    }, {
+      key: "scanForDevices",
+      value: function () {
+        var _scanForDevices = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee4() {
+          return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+            while (1) switch (_context4.prev = _context4.next) {
+              case 0:
+                this._runtime.on(this._runtime.constructor.PERIPHERAL_LIST_UPDATE, this.updateDeviceList.bind(this));
+              case 1:
+                if (!(this.discovering && !this._ble.isConnected())) {
+                  _context4.next = 6;
+                  break;
+                }
+                _context4.next = 4;
+                return new Promise(function (resolve) {
+                  return setTimeout(resolve, 100);
+                });
+              case 4:
+                _context4.next = 1;
+                break;
+              case 6:
+              case "end":
+                return _context4.stop();
+            }
+          }, _callee4, this);
+        }));
+        function scanForDevices() {
+          return _scanForDevices.apply(this, arguments);
+        }
+        return scanForDevices;
+      }()
+    }, {
+      key: "updateDeviceList",
+      value: function updateDeviceList() {
+        var _this3 = this;
+        var deviceList = document.getElementById('device-list');
+        if (!deviceList) return;
+        deviceList.innerHTML = ''; // Clear existing list
+        var _loop = function _loop() {
+          var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+            id = _Object$entries$_i[0],
+            device = _Object$entries$_i[1];
+          var item = document.createElement('li');
+          item.textContent = device.name || "Unknown Device (".concat(id, ")");
+          item.dataset.deviceId = id;
+          item.onclick = function () {
+            return _this3.handleDeviceSelection(id);
+          };
+          deviceList.appendChild(item);
+        };
+        for (var _i = 0, _Object$entries = Object.entries(this._ble._availablePeripherals); _i < _Object$entries.length; _i++) {
+          _loop();
+        }
+      }
+    }, {
+      key: "handleDeviceSelection",
+      value: function handleDeviceSelection(deviceId) {
+        console.log("Selected device: ".concat(deviceId));
+        this.deviceId = deviceId;
+        this.device = this._ble._availablePeripherals[deviceId];
+        console.log('connecting');
+        this._ble.connectPeripheral(deviceId);
+        this.discovering = false;
+
+        // Close UI after selection
+        var container = document.getElementById('device-list-container');
+        if (container) {
+          document.body.removeChild(container);
+        }
+        console.log(this._ble.isConnected());
+      }
+    }, {
+      key: "discoverTimeout",
+      value: function discoverTimeout() {
+        this.discovering = false;
+        this.discoverCancelled = true;
+        var container = document.getElementById('device-list-container');
+        if (container) {
+          document.body.removeChild(container);
+        }
+      }
+
+      /**
+       * Write a message to the device with Csratch Link
+       * @param {string} uuid - the UUID of the characteristic to write to
+       * @param {Uint8Array} message - the message to write
+       */
+    }, {
+      key: "sendScratchLink",
+      value: (function () {
+        var _sendScratchLink = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee5(uuid, message) {
+          return _regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) switch (_context5.prev = _context5.next) {
+              case 0:
+                if (this._ble.isConnected()) {
+                  _context5.next = 2;
+                  break;
+                }
+                return _context5.abrupt("return");
+              case 2:
+                _context5.next = 4;
+                return this._ble.write(SamLabsBLE.SAMServ, uuid, Base64Util.uint8ArrayToBase64(message), 'base64');
+              case 4:
+              case "end":
+                return _context5.stop();
+            }
+          }, _callee5, this);
+        }));
+        function sendScratchLink(_x5, _x6) {
+          return _sendScratchLink.apply(this, arguments);
+        }
+        return sendScratchLink;
+      }())
+    }, {
+      key: "handleSensorNotifications",
+      value: function handleSensorNotifications(event) {
+        var value;
+        if (this.webBLE) {
+          value = event.target.value.getUint8(0);
+        } else {
+          var data = Base64Util.base64ToUint8Array(event);
+          value = data[0];
+        }
+        if (DeviceTypes[this.typeId].invertValues) {
+          this.value = 100 - value / 2.55;
+        } else {
+          this.value = value / 2.55;
+        }
+      }
+    }, {
+      key: "handleBattChange",
+      value: function handleBattChange(event) {
+        var value;
+        if (this.webBLE) {
+          value = event.target.value.getUint8(0);
+        } else {
+          var data = Base64Util.base64ToUint8Array(event);
+          value = data[0];
+        }
+        this.battery = value;
+      }
+    }, {
+      key: "onDisconnected",
+      value: function onDisconnected() {}
+
+      /**
+       * send a message to the stus led characteristic
+       * @param {Uint8Array} msg the message
+       * @param {boolean} [useLimiter=true] - if true, use the rate limiter
+       */
+    }, {
+      key: "writeStatusLed",
+      value: (function () {
+        var _writeStatusLed = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee6(msg) {
+          var useLimiter,
+            _args6 = arguments;
+          return _regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) switch (_context6.prev = _context6.next) {
+              case 0:
+                useLimiter = _args6.length > 1 && _args6[1] !== undefined ? _args6[1] : true;
+                if (!useLimiter) {
+                  _context6.next = 4;
+                  break;
+                }
+                if (this._rateLimiter.okayToSend()) {
+                  _context6.next = 4;
+                  break;
+                }
+                return _context6.abrupt("return", Promise.resolve());
+              case 4:
+                if (!this.webBLE) {
+                  _context6.next = 9;
+                  break;
+                }
+                _context6.next = 7;
+                return this.SAMStatusLEDCharacteristic.writeValue(msg);
+              case 7:
+                _context6.next = 11;
+                break;
+              case 9:
+                _context6.next = 11;
+                return this.sendScratchLink(SamLabsBLE.StatusLedCharacteristic, msg);
+              case 11:
+                return _context6.abrupt("return", new Promise(function (resolve) {
+                  window.setTimeout(function () {
+                    resolve();
+                  }, SamLabsBLE.sendInterval);
+                }));
+              case 12:
+              case "end":
+                return _context6.stop();
+            }
+          }, _callee6, this);
+        }));
+        function writeStatusLed(_x7) {
+          return _writeStatusLed.apply(this, arguments);
+        }
+        return writeStatusLed;
+      }()
+      /**
+       * send a message to the actor characteristic
+       * @param {Uint8Array} msg the mesage
+       * @param {boolean} [useLimiter=true] - if true, use the rate limiter
+       */
+      )
+    }, {
+      key: "writeActor",
+      value: (function () {
+        var _writeActor = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee7(msg) {
+          var useLimiter,
+            _args7 = arguments;
+          return _regeneratorRuntime.wrap(function _callee7$(_context7) {
+            while (1) switch (_context7.prev = _context7.next) {
+              case 0:
+                useLimiter = _args7.length > 1 && _args7[1] !== undefined ? _args7[1] : true;
+                if (!useLimiter) {
+                  _context7.next = 4;
+                  break;
+                }
+                if (this._rateLimiter.okayToSend()) {
+                  _context7.next = 4;
+                  break;
+                }
+                return _context7.abrupt("return", Promise.resolve());
+              case 4:
+                if (!this.webBLE) {
+                  _context7.next = 9;
+                  break;
+                }
+                _context7.next = 7;
+                return this.SAMActorCharacteristic.writeValue(msg);
+              case 7:
+                _context7.next = 11;
+                break;
+              case 9:
+                _context7.next = 11;
+                return this.sendScratchLink(SamLabsBLE.ActorCharacteristic, msg);
+              case 11:
+                return _context7.abrupt("return", new Promise(function (resolve) {
+                  window.setTimeout(function () {
+                    resolve();
+                  }, SamLabsBLE.sendInterval);
+                }));
+              case 12:
+              case "end":
+                return _context7.stop();
+            }
+          }, _callee7, this);
+        }));
+        function writeActor(_x8) {
+          return _writeActor.apply(this, arguments);
+        }
+        return writeActor;
+      }()
+      /**
+       * send a message to the SamBot characteristic
+       * @param {Uint8Array} msg the mesage
+       * @param {boolean} [useLimiter=true] - if true, use the rate limiter
+       */
+      )
+    }, {
+      key: "writeBot",
+      value: (function () {
+        var _writeBot = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee8(msg) {
+          var useLimiter,
+            _args8 = arguments;
+          return _regeneratorRuntime.wrap(function _callee8$(_context8) {
+            while (1) switch (_context8.prev = _context8.next) {
+              case 0:
+                useLimiter = _args8.length > 1 && _args8[1] !== undefined ? _args8[1] : true;
+                if (!useLimiter) {
+                  _context8.next = 4;
+                  break;
+                }
+                if (this._rateLimiter.okayToSend()) {
+                  _context8.next = 4;
+                  break;
+                }
+                return _context8.abrupt("return", Promise.resolve());
+              case 4:
+                if (!this.webBLE) {
+                  _context8.next = 9;
+                  break;
+                }
+                _context8.next = 7;
+                return this.SAMBotCharacteristic.writeValue(msg);
+              case 7:
+                _context8.next = 11;
+                break;
+              case 9:
+                _context8.next = 11;
+                return this.sendScratchLink(SamLabsBLE.SAMBotCommandCharacteristic, msg);
+              case 11:
+                return _context8.abrupt("return", new Promise(function (resolve) {
+                  window.setTimeout(function () {
+                    resolve();
+                  }, SamLabsBLE.sendInterval);
+                }));
+              case 12:
+              case "end":
+                return _context8.stop();
+            }
+          }, _callee8, this);
+        }));
+        function writeBot(_x9) {
+          return _writeBot.apply(this, arguments);
+        }
+        return writeBot;
+      }())
+    }]);
+  }();
+  device = {
+    SamLabsBLE: SamLabsBLE,
+    DeviceTypes: DeviceTypes,
+    BabyBotIndex: BabyBotIndex,
+    SAMDevice: SAMDevice
+  };
+  return device;
+}
+
+var deviceExports = requireDevice();
+
 /**
  * Formatter which is used for translation.
  * This will be replaced which is used in the runtime.
@@ -1221,7 +2307,7 @@ var EXTENSION_ID = 'samlabs';
  * When it was loaded as a module, 'extensionURL' will be replaced a URL which is retrieved from.
  * @type {string}
  */
-var extensionURL = 'https://Rbel12b.github.io/scratch-samlabs/dist/samlabs.mjs';
+var extensionURL = 'https://Rbel12b.github.io/Scratch/dist/samlabs.mjs';
 
 /**
  * Scratch 3.0 blocks for example of Xcratch.
@@ -1232,7 +2318,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
    * @param {Runtime} runtime - the Scratch 3.0 runtime.
    */
   function ExtensionBlocks(runtime) {
-    _classCallCheck(this, ExtensionBlocks);
+    _classCallCheck$1(this, ExtensionBlocks);
     /**
      * The Scratch 3.0 runtime.
      * @type {Runtime}
@@ -1359,7 +2445,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
   /**
    * @returns {object} metadata for this extension and its blocks.
    */
-  return _createClass(ExtensionBlocks, [{
+  return _createClass$1(ExtensionBlocks, [{
     key: "getInfo",
     value: function getInfo() {
       setupTranslations();
@@ -1372,8 +2458,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         color2: '#0DA57A',
         blocks: this.blocks,
         menus: {
-          deviceMenu: 'getDeviceMenu',
-          babyBotCommand: 'getBabyBotCommandMenu'
+          deviceMenu: 'getDeviceMenu'
         }
       };
     }
@@ -1437,13 +2522,13 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         return _regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              device = new SAMDevice(this.runtime, this.extensionId);
+              device = new deviceExports.SAMDevice(this.runtime, this.extensionId);
               _context.next = 3;
               return device.connectToDevice(this.deviceMap, {
                 filters: [{
                   namePrefix: 'SAM'
                 }],
-                optionalServices: [SamLabsBLE.battServ, SamLabsBLE.SAMServ]
+                optionalServices: [deviceExports.SamLabsBLE.battServ, deviceExports.SamLabsBLE.SAMServ]
               });
             case 3:
               connected = _context.sent;

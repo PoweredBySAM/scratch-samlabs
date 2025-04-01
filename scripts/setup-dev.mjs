@@ -10,6 +10,7 @@ const vmSrcOrg = path.resolve(process.cwd(), '../scratch-vm/src');
 const vmRefs = [
     'extension-support',
     'util',
+    'io',
 ];
 
 // Make symbolic link

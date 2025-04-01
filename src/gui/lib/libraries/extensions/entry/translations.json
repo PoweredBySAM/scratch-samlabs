@@ -1,6 +1,8 @@
 {
   "en": {
     "samlabs.entry.name": "SAM Labs",
-    "samlabs.entry.description": "Description for the 'SAM Labs' extension"
+    "samlabs.entry.description": "SAM Labs",
+    "sambot.entry.name": "Baby SAM Bot",
+    "sambot.entry.description": "Baby SAM Bot"
   }
 }

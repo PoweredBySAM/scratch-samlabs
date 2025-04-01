@@ -1,6 +1,4 @@
 const BLE = require('../../io/ble');
-// eslint-disable-next-line no-unused-vars
-const Runtime = require('../../engine/runtime');
 const Base64Util = require('../../util/base64-util');
 const RateLimiter = require('../../util/rateLimiter.js');
 
