@@ -2435,7 +2435,29 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }];
     this.DeviceMapping = new Map();
   }
+
+  /**
+   * @returns {object} metadata for this extension and its blocks.
+   */
   return _createClass$1(ExtensionBlocks, [{
+    key: "getInfo",
+    value: function getInfo() {
+      setupTranslations();
+      return {
+        id: ExtensionBlocks.EXTENSION_ID,
+        name: ExtensionBlocks.EXTENSION_NAME,
+        extensionURL: ExtensionBlocks.extensionURL,
+        showStatusButton: false,
+        color1: '#0FBD8C',
+        color2: '#0DA57A',
+        blocks: this.blocks,
+        menus: {
+          deviceMenu: 'getDeviceMenu',
+          babyBotCommand: 'getBabyBotCommandMenu'
+        }
+      };
+    }
+  }, {
     key: "updateDeviceMenu",
     value: function updateDeviceMenu() {
       var _this = this;

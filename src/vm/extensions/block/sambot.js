@@ -180,6 +180,26 @@ class ExtensionBlocks {
         this.DeviceMapping = new Map();
     }
 
+    /**
+     * @returns {object} metadata for this extension and its blocks.
+     */
+    getInfo () {
+        setupTranslations();
+        return {
+            id: ExtensionBlocks.EXTENSION_ID,
+            name: ExtensionBlocks.EXTENSION_NAME,
+            extensionURL: ExtensionBlocks.extensionURL,
+            showStatusButton: false,
+            color1: '#0FBD8C',
+            color2: '#0DA57A',
+            blocks: this.blocks,
+            menus: {
+                deviceMenu: 'getDeviceMenu',
+                babyBotCommand: 'getBabyBotCommandMenu'
+            }
+        };
+    }
+
     updateDeviceMenu () {
         this.deviceMenu = [];
         this.deviceMap.forEach(device => {
