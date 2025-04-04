@@ -1518,6 +1518,12 @@ function requireDevice() {
     sendRateMax: 20
   };
   var BabyBotIndex = 1;
+  var SensorBeginIndex = 2;
+  var SensorEndIndex = 7;
+  var ButtonIndex = 8;
+  var rgbIndex = 9;
+  var motorIndex = 10;
+  var servoIndex = 11;
   var DeviceTypes = [{
     name: 'undefined',
     advName: ''
@@ -1531,9 +1537,6 @@ function requireDevice() {
     name: 'light sensor',
     advName: 'SAM LDR'
   }, {
-    name: 'button',
-    advName: 'SAM Button'
-  }, {
     name: 'proximity',
     advName: 'SAM IR Sensor'
   }, {
@@ -1545,6 +1548,9 @@ function requireDevice() {
   }, {
     name: 'pressure',
     advName: 'SAM Pressure'
+  }, {
+    name: 'button',
+    advName: 'SAM Button'
   }, {
     name: 'RGB led',
     advName: 'SAM RGB LED'
@@ -1605,6 +1611,14 @@ function requireDevice() {
        * @type {Runtime}
        */
       _defineProperty(this, "_runtime", null);
+      /**
+       * @type {number}
+       */
+      _defineProperty(this, "menuId", 0);
+      /**
+       * @type {string}
+       */
+      _defineProperty(this, "menuName", '');
       this._rateLimiter = new RateLimiter(SamLabsBLE.sendRateMax);
       this._runtime = runtime;
       this.extID = id;
@@ -1614,6 +1628,33 @@ function requireDevice() {
       this._runtime.on(this._runtime.constructor.PERIPHERAL_SCAN_TIMEOUT, this.discoverTimeout.bind(this));
     }
     return _createClass$1(SAMDevice, [{
+      key: "setMenuDetails",
+      value: function setMenuDetails() {
+        var _this = this;
+        if (this.typeId === ButtonIndex) {
+          this.menuId = 0;
+        } else if (this.typeId === motorIndex) {
+          this.menuId = 1;
+        } else if (this.typeId === servoIndex) {
+          this.menuId = 2;
+        } else if (this.typeId === rgbIndex) {
+          this.menuId = 3;
+        } else if (this.typeId >= SensorBeginIndex && this.typeId <= SensorEndIndex) {
+          this.menuId = 4;
+        }
+        var sameDevices = 1;
+        this.deviceMap.forEach(function (value) {
+          if (value.menuId === _this.menuId) {
+            sameDevices++;
+          }
+        });
+        if (this.menuId === 4) {
+          this.menuName = this.displayName;
+        } else {
+          this.menuName = String(sameDevices);
+        }
+      }
+    }, {
       key: "connectToDevice",
       value: function () {
         var _connectToDevice = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee(deviceMap, options) {
@@ -1669,7 +1710,7 @@ function requireDevice() {
       key: "connectWebBLE",
       value: function () {
         var _connectWebBLE = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee2(options) {
-          var _this = this;
+          var _this2 = this;
           var device, server, battServ, SAMServ, sameDevices;
           return _regeneratorRuntime.wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
@@ -1681,7 +1722,7 @@ function requireDevice() {
                 this.device = device;
                 console.log('Device found:', this.device);
                 this.device.addEventListener('gattserverdisconnected', function () {
-                  return _this.onDisconnected();
+                  return _this2.onDisconnected();
                 });
 
                 // Connect to the GATT server
@@ -1791,43 +1832,44 @@ function requireDevice() {
                 this.deviceType = DeviceTypes[this.typeId];
                 this.sameDevices = sameDevices;
                 this.device = device;
+                this.setMenuDetails();
                 if (!(this.SensorAvailable && !this.SAMBotAvailable)) {
-                  _context2.next = 90;
+                  _context2.next = 91;
                   break;
                 }
-                _context2.prev = 80;
-                _context2.next = 83;
+                _context2.prev = 81;
+                _context2.next = 84;
                 return this.SAMSensorCharacteristic.startNotifications();
-              case 83:
+              case 84:
                 this.SAMSensorCharacteristic.addEventListener('characteristicvaluechanged', this.handleSensorNotifications.bind(this));
                 console.log('subscribed to sensor events');
-                _context2.next = 90;
+                _context2.next = 91;
                 break;
-              case 87:
-                _context2.prev = 87;
-                _context2.t3 = _context2["catch"](80);
+              case 88:
+                _context2.prev = 88;
+                _context2.t3 = _context2["catch"](81);
                 console.log('Failed to subscribe to sensor events:', _context2.t3);
-              case 90:
-                _context2.prev = 90;
-                _context2.next = 93;
+              case 91:
+                _context2.prev = 91;
+                _context2.next = 94;
                 return this.batteryLevelCharacteristic.startNotifications();
-              case 93:
+              case 94:
                 this.batteryLevelCharacteristic.addEventListener('characteristicvaluechanged', this.handleBattChange.bind(this));
                 console.log('subscribed to battery events');
-                _context2.next = 100;
+                _context2.next = 101;
                 break;
-              case 97:
-                _context2.prev = 97;
-                _context2.t4 = _context2["catch"](90);
+              case 98:
+                _context2.prev = 98;
+                _context2.t4 = _context2["catch"](91);
                 console.log('Failed to subscribe to battery events:', _context2.t4);
-              case 100:
+              case 101:
                 console.log("Connected to ".concat(device.name || 'Unknown Device', ", id ").concat(device.id, ", sambot ").concat(this.SAMBotAvailable));
                 return _context2.abrupt("return", true);
-              case 102:
+              case 103:
               case "end":
                 return _context2.stop();
             }
-          }, _callee2, this, [[22, 29], [35, 42], [49, 56], [80, 87], [90, 97]]);
+          }, _callee2, this, [[22, 29], [35, 42], [49, 56], [81, 88], [91, 98]]);
         }));
         function connectWebBLE(_x3) {
           return _connectWebBLE.apply(this, arguments);
@@ -1845,7 +1887,7 @@ function requireDevice() {
       key: "connectScratchLink",
       value: function () {
         var _connectScratchLink = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee3(options) {
-          var _this2 = this;
+          var _this3 = this;
           var container, _device, sameDevices;
           return _regeneratorRuntime.wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
@@ -1870,8 +1912,8 @@ function requireDevice() {
                   document.body.appendChild(container);
                   document.getElementById('close-device-list').onclick = function () {
                     document.body.removeChild(container);
-                    _this2.discovering = false; // Stop discovery when closed
-                    _this2.discoverCancelled = true;
+                    _this3.discovering = false; // Stop discovery when closed
+                    _this3.discoverCancelled = true;
                   };
                 }
                 _context3.next = 10;
@@ -1920,32 +1962,33 @@ function requireDevice() {
                 this.SAMBotAvailable = this.device.name === 'SAM BabyBot';
                 this.ActorAvailable = true;
                 this.SensorAvailable = true;
-              case 34:
+                this.setMenuDetails();
+              case 35:
                 if (this._ble.isConnected()) {
-                  _context3.next = 39;
+                  _context3.next = 40;
                   break;
                 }
-                _context3.next = 37;
+                _context3.next = 38;
                 return new Promise(function (resolve) {
                   return setTimeout(resolve, 500);
                 });
-              case 37:
-                _context3.next = 34;
+              case 38:
+                _context3.next = 35;
                 break;
-              case 39:
-                _context3.next = 44;
+              case 40:
+                _context3.next = 45;
                 break;
-              case 41:
-                _context3.prev = 41;
+              case 42:
+                _context3.prev = 42;
                 _context3.t0 = _context3["catch"](0);
                 console.log(_context3.t0);
-              case 44:
-                return _context3.abrupt("return", true);
               case 45:
+                return _context3.abrupt("return", true);
+              case 46:
               case "end":
                 return _context3.stop();
             }
-          }, _callee3, this, [[0, 41]]);
+          }, _callee3, this, [[0, 42]]);
         }));
         function connectScratchLink(_x4) {
           return _connectScratchLink.apply(this, arguments);
@@ -1993,7 +2036,7 @@ function requireDevice() {
     }, {
       key: "updateDeviceList",
       value: function updateDeviceList() {
-        var _this3 = this;
+        var _this4 = this;
         var deviceList = document.getElementById('device-list');
         if (!deviceList) return;
         deviceList.innerHTML = ''; // Clear existing list
@@ -2005,7 +2048,7 @@ function requireDevice() {
           item.textContent = device.name || "Unknown Device (".concat(id, ")");
           item.dataset.deviceId = id;
           item.onclick = function () {
-            return _this3.handleDeviceSelection(id);
+            return _this4.handleDeviceSelection(id);
           };
           deviceList.appendChild(item);
         };

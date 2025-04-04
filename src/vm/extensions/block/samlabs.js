@@ -111,7 +111,11 @@ class ExtensionBlocks {
         this.runtime.on('PROJECT_STOP_ALL', this._stopAll);
         this.runtime.on('PROJECT_RUN_STOP', this._stopAll);
         this.deviceMenu = [];
-        this.BabyBotdeviceMenu = [];
+        this.buttonMenu = [];
+        this.motorMenu = [];
+        this.servoMenu = [];
+        this.rgbMenu = [];
+        this.sensorMenu = [];
         this.blocks = [
             {
                 opcode: 'connectToDevice',
@@ -121,7 +125,7 @@ class ExtensionBlocks {
             {
                 opcode: 'setLEDColor',
                 blockType: BlockType.COMMAND,
-                text: 'Set Block [num] Status Led Color: R[red], G[green], B[blue]',
+                text: 'Set [num] Status Led Color: R[red], G[green], B[blue]',
                 terminal: false,
                 arguments: {
                     num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
@@ -133,10 +137,10 @@ class ExtensionBlocks {
             {
                 opcode: 'setLEDRGBColor',
                 blockType: BlockType.COMMAND,
-                text: 'Set Block [num] RGB Led Color: R[red], G[green], B[blue]',
+                text: 'Set rgb led [num] color: R[red], G[green], B[blue]',
                 terminal: false,
                 arguments: {
-                    num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
+                    num: {menu: 'rgbMenu', type: ArgumentType.NUMBER},
                     red: {defaultValue: 0, type: ArgumentType.NUMBER},
                     green: {defaultValue: 0, type: ArgumentType.NUMBER},
                     blue: {defaultValue: 0, type: ArgumentType.NUMBER}
@@ -145,36 +149,54 @@ class ExtensionBlocks {
             {
                 opcode: 'setBlockMotorSpeed',
                 blockType: BlockType.COMMAND,
-                text: 'Set Block [num] motor speed [val]',
+                text: 'Set motor [num] speed [val]',
                 terminal: false,
                 arguments: {
-                    num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
+                    num: {menu: 'motorMenu', type: ArgumentType.NUMBER},
                     val: {defaultValue: 0, type: ArgumentType.NUMBER}
                 }
             },
             {
                 opcode: 'setBlockServo',
                 blockType: BlockType.COMMAND,
-                text: 'Set Block [num] Servo angle [val]°',
+                text: 'Set servo [num] angle [val]°',
                 terminal: false,
                 arguments: {
-                    num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
+                    num: {menu: 'servoMenu', type: ArgumentType.NUMBER},
                     val: {defaultValue: 0, type: ArgumentType.NUMBER}
                 }
             },
             {
                 opcode: 'getSensorValue',
                 blockType: BlockType.REPORTER,
-                text: 'Sensor value, Block [num]',
+                text: 'Block [num] sensor value',
                 terminal: false,
                 arguments: {
-                    num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
+                    num: {menu: 'sensorMenu', type: ArgumentType.NUMBER}
                 }
             },
             {
+                opcode: 'getButton',
+                blockType: BlockType.BOOLEAN,
+                text: 'Is button [num] pressed',
+                terminal: false,
+                arguments: {
+                    num: {menu: 'buttonMenu', type: ArgumentType.NUMBER}
+                }
+            },
+            // {
+            //     opcode: 'getCelsius',
+            //     blockType: BlockType.REPORTER,
+            //     text: 'Temperature [num] (°C)',
+            //     terminal: false,
+            //     arguments: {
+            //         num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
+            //     }
+            // },
+            {
                 opcode: 'getBattery',
                 blockType: BlockType.REPORTER,
-                text: 'Battery percentage, Block [num]',
+                text: '[num] battery percentage',
                 terminal: false,
                 arguments: {
                     num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
@@ -198,15 +220,43 @@ class ExtensionBlocks {
             color2: '#0DA57A',
             blocks: this.blocks,
             menus: {
-                deviceMenu: 'getDeviceMenu'
+                deviceMenu: 'getDeviceMenu',
+                buttonMenu: 'getButtonMenu',
+                motorMenu: 'getMotorMenu',
+                servoMenu: 'getServoMenu',
+                rgbMenu: 'getRGBMenu',
+                sensorMenu: 'getSensorMenu'
             }
         };
     }
     
     updateDeviceMenu () {
         this.deviceMenu = [];
-        this.BabyBotdeviceMenu = [];
+        this.buttonMenu = [];
+        this.motorMenu = [];
+        this.servoMenu = [];
+        this.rgbMenu = [];
+        this.sensorMenu = [];
         this.deviceMap.forEach(device => {
+            switch (device.menuId) {
+            case 0:
+                this.buttonMenu.push({text: device.menuName, value: device.id});
+                break;
+            case 1:
+                this.motorMenu.push({text: device.menuName, value: device.id});
+                break;
+            case 2:
+                this.servoMenu.push({text: device.menuName, value: device.id});
+                break;
+            case 3:
+                this.rgbMenu.push({text: device.menuName, value: device.id});
+                break;
+            case 4:
+                this.sensorMenu.push({text: device.menuName, value: device.id});
+                break;
+            default:
+                break;
+            }
             this.deviceMenu.push({text: device.displayName, value: device.id});
         });
         // this.runtime.requestBlocksUpdate(); - messes up the create variable button
@@ -214,6 +264,26 @@ class ExtensionBlocks {
 
     getDeviceMenu () {
         return this.deviceMenu.length ? this.deviceMenu : [{text: '-', value: '-'}];
+    }
+
+    getButtonMenu () {
+        return this.buttonMenu.length ? this.buttonMenu : [{text: '-', value: '-'}];
+    }
+
+    getMotorMenu () {
+        return this.motorMenu.length ? this.motorMenu : [{text: '-', value: '-'}];
+    }
+
+    getSensorMenu () {
+        return this.sensorMenu.length ? this.sensorMenu : [{text: '-', value: '-'}];
+    }
+
+    getServoMenu () {
+        return this.servoMenu.length ? this.servoMenu : [{text: '-', value: '-'}];
+    }
+
+    getRGBMenu () {
+        return this.rgbMenu.length ? this.rgbMenu : [{text: '-', value: '-'}];
     }
 
     /**
@@ -333,6 +403,22 @@ class ExtensionBlocks {
     }
 
     getSensorValue (args) {
+        const block = this.getDeviceFromId(args.num);
+        if (!block) {
+            return 0;
+        }
+        return block.value;
+    }
+
+    getButton (args) {
+        const block = this.getDeviceFromId(args.num);
+        if (!block) {
+            return 0;
+        }
+        return block.value === 100;
+    }
+
+    getCelsius (args) {
         const block = this.getDeviceFromId(args.num);
         if (!block) {
             return 0;

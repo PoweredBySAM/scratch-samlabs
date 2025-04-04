@@ -1518,6 +1518,12 @@ function requireDevice() {
     sendRateMax: 20
   };
   var BabyBotIndex = 1;
+  var SensorBeginIndex = 2;
+  var SensorEndIndex = 7;
+  var ButtonIndex = 8;
+  var rgbIndex = 9;
+  var motorIndex = 10;
+  var servoIndex = 11;
   var DeviceTypes = [{
     name: 'undefined',
     advName: ''
@@ -1531,9 +1537,6 @@ function requireDevice() {
     name: 'light sensor',
     advName: 'SAM LDR'
   }, {
-    name: 'button',
-    advName: 'SAM Button'
-  }, {
     name: 'proximity',
     advName: 'SAM IR Sensor'
   }, {
@@ -1545,6 +1548,9 @@ function requireDevice() {
   }, {
     name: 'pressure',
     advName: 'SAM Pressure'
+  }, {
+    name: 'button',
+    advName: 'SAM Button'
   }, {
     name: 'RGB led',
     advName: 'SAM RGB LED'
@@ -1605,6 +1611,14 @@ function requireDevice() {
        * @type {Runtime}
        */
       _defineProperty(this, "_runtime", null);
+      /**
+       * @type {number}
+       */
+      _defineProperty(this, "menuId", 0);
+      /**
+       * @type {string}
+       */
+      _defineProperty(this, "menuName", '');
       this._rateLimiter = new RateLimiter(SamLabsBLE.sendRateMax);
       this._runtime = runtime;
       this.extID = id;
@@ -1614,6 +1628,33 @@ function requireDevice() {
       this._runtime.on(this._runtime.constructor.PERIPHERAL_SCAN_TIMEOUT, this.discoverTimeout.bind(this));
     }
     return _createClass$1(SAMDevice, [{
+      key: "setMenuDetails",
+      value: function setMenuDetails() {
+        var _this = this;
+        if (this.typeId === ButtonIndex) {
+          this.menuId = 0;
+        } else if (this.typeId === motorIndex) {
+          this.menuId = 1;
+        } else if (this.typeId === servoIndex) {
+          this.menuId = 2;
+        } else if (this.typeId === rgbIndex) {
+          this.menuId = 3;
+        } else if (this.typeId >= SensorBeginIndex && this.typeId <= SensorEndIndex) {
+          this.menuId = 4;
+        }
+        var sameDevices = 1;
+        this.deviceMap.forEach(function (value) {
+          if (value.menuId === _this.menuId) {
+            sameDevices++;
+          }
+        });
+        if (this.menuId === 4) {
+          this.menuName = this.displayName;
+        } else {
+          this.menuName = String(sameDevices);
+        }
+      }
+    }, {
       key: "connectToDevice",
       value: function () {
         var _connectToDevice = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee(deviceMap, options) {
@@ -1669,7 +1710,7 @@ function requireDevice() {
       key: "connectWebBLE",
       value: function () {
         var _connectWebBLE = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee2(options) {
-          var _this = this;
+          var _this2 = this;
           var device, server, battServ, SAMServ, sameDevices;
           return _regeneratorRuntime.wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
@@ -1681,7 +1722,7 @@ function requireDevice() {
                 this.device = device;
                 console.log('Device found:', this.device);
                 this.device.addEventListener('gattserverdisconnected', function () {
-                  return _this.onDisconnected();
+                  return _this2.onDisconnected();
                 });
 
                 // Connect to the GATT server
@@ -1791,43 +1832,44 @@ function requireDevice() {
                 this.deviceType = DeviceTypes[this.typeId];
                 this.sameDevices = sameDevices;
                 this.device = device;
+                this.setMenuDetails();
                 if (!(this.SensorAvailable && !this.SAMBotAvailable)) {
-                  _context2.next = 90;
+                  _context2.next = 91;
                   break;
                 }
-                _context2.prev = 80;
-                _context2.next = 83;
+                _context2.prev = 81;
+                _context2.next = 84;
                 return this.SAMSensorCharacteristic.startNotifications();
-              case 83:
+              case 84:
                 this.SAMSensorCharacteristic.addEventListener('characteristicvaluechanged', this.handleSensorNotifications.bind(this));
                 console.log('subscribed to sensor events');
-                _context2.next = 90;
+                _context2.next = 91;
                 break;
-              case 87:
-                _context2.prev = 87;
-                _context2.t3 = _context2["catch"](80);
+              case 88:
+                _context2.prev = 88;
+                _context2.t3 = _context2["catch"](81);
                 console.log('Failed to subscribe to sensor events:', _context2.t3);
-              case 90:
-                _context2.prev = 90;
-                _context2.next = 93;
+              case 91:
+                _context2.prev = 91;
+                _context2.next = 94;
                 return this.batteryLevelCharacteristic.startNotifications();
-              case 93:
+              case 94:
                 this.batteryLevelCharacteristic.addEventListener('characteristicvaluechanged', this.handleBattChange.bind(this));
                 console.log('subscribed to battery events');
-                _context2.next = 100;
+                _context2.next = 101;
                 break;
-              case 97:
-                _context2.prev = 97;
-                _context2.t4 = _context2["catch"](90);
+              case 98:
+                _context2.prev = 98;
+                _context2.t4 = _context2["catch"](91);
                 console.log('Failed to subscribe to battery events:', _context2.t4);
-              case 100:
+              case 101:
                 console.log("Connected to ".concat(device.name || 'Unknown Device', ", id ").concat(device.id, ", sambot ").concat(this.SAMBotAvailable));
                 return _context2.abrupt("return", true);
-              case 102:
+              case 103:
               case "end":
                 return _context2.stop();
             }
-          }, _callee2, this, [[22, 29], [35, 42], [49, 56], [80, 87], [90, 97]]);
+          }, _callee2, this, [[22, 29], [35, 42], [49, 56], [81, 88], [91, 98]]);
         }));
         function connectWebBLE(_x3) {
           return _connectWebBLE.apply(this, arguments);
@@ -1845,7 +1887,7 @@ function requireDevice() {
       key: "connectScratchLink",
       value: function () {
         var _connectScratchLink = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee3(options) {
-          var _this2 = this;
+          var _this3 = this;
           var container, _device, sameDevices;
           return _regeneratorRuntime.wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
@@ -1870,8 +1912,8 @@ function requireDevice() {
                   document.body.appendChild(container);
                   document.getElementById('close-device-list').onclick = function () {
                     document.body.removeChild(container);
-                    _this2.discovering = false; // Stop discovery when closed
-                    _this2.discoverCancelled = true;
+                    _this3.discovering = false; // Stop discovery when closed
+                    _this3.discoverCancelled = true;
                   };
                 }
                 _context3.next = 10;
@@ -1920,32 +1962,33 @@ function requireDevice() {
                 this.SAMBotAvailable = this.device.name === 'SAM BabyBot';
                 this.ActorAvailable = true;
                 this.SensorAvailable = true;
-              case 34:
+                this.setMenuDetails();
+              case 35:
                 if (this._ble.isConnected()) {
-                  _context3.next = 39;
+                  _context3.next = 40;
                   break;
                 }
-                _context3.next = 37;
+                _context3.next = 38;
                 return new Promise(function (resolve) {
                   return setTimeout(resolve, 500);
                 });
-              case 37:
-                _context3.next = 34;
+              case 38:
+                _context3.next = 35;
                 break;
-              case 39:
-                _context3.next = 44;
+              case 40:
+                _context3.next = 45;
                 break;
-              case 41:
-                _context3.prev = 41;
+              case 42:
+                _context3.prev = 42;
                 _context3.t0 = _context3["catch"](0);
                 console.log(_context3.t0);
-              case 44:
-                return _context3.abrupt("return", true);
               case 45:
+                return _context3.abrupt("return", true);
+              case 46:
               case "end":
                 return _context3.stop();
             }
-          }, _callee3, this, [[0, 41]]);
+          }, _callee3, this, [[0, 42]]);
         }));
         function connectScratchLink(_x4) {
           return _connectScratchLink.apply(this, arguments);
@@ -1993,7 +2036,7 @@ function requireDevice() {
     }, {
       key: "updateDeviceList",
       value: function updateDeviceList() {
-        var _this3 = this;
+        var _this4 = this;
         var deviceList = document.getElementById('device-list');
         if (!deviceList) return;
         deviceList.innerHTML = ''; // Clear existing list
@@ -2005,7 +2048,7 @@ function requireDevice() {
           item.textContent = device.name || "Unknown Device (".concat(id, ")");
           item.dataset.deviceId = id;
           item.onclick = function () {
-            return _this3.handleDeviceSelection(id);
+            return _this4.handleDeviceSelection(id);
           };
           deviceList.appendChild(item);
         };
@@ -2335,7 +2378,11 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     this.runtime.on('PROJECT_STOP_ALL', this._stopAll);
     this.runtime.on('PROJECT_RUN_STOP', this._stopAll);
     this.deviceMenu = [];
-    this.BabyBotdeviceMenu = [];
+    this.buttonMenu = [];
+    this.motorMenu = [];
+    this.servoMenu = [];
+    this.rgbMenu = [];
+    this.sensorMenu = [];
     this.blocks = [{
       opcode: 'connectToDevice',
       blockType: BlockType.COMMAND,
@@ -2343,7 +2390,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'setLEDColor',
       blockType: BlockType.COMMAND,
-      text: 'Set Block [num] Status Led Color: R[red], G[green], B[blue]',
+      text: 'Set [num] Status Led Color: R[red], G[green], B[blue]',
       terminal: false,
       arguments: {
         num: {
@@ -2366,11 +2413,11 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'setLEDRGBColor',
       blockType: BlockType.COMMAND,
-      text: 'Set Block [num] RGB Led Color: R[red], G[green], B[blue]',
+      text: 'Set rgb led [num] color: R[red], G[green], B[blue]',
       terminal: false,
       arguments: {
         num: {
-          menu: 'deviceMenu',
+          menu: 'rgbMenu',
           type: ArgumentType.NUMBER
         },
         red: {
@@ -2389,11 +2436,11 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'setBlockMotorSpeed',
       blockType: BlockType.COMMAND,
-      text: 'Set Block [num] motor speed [val]',
+      text: 'Set motor [num] speed [val]',
       terminal: false,
       arguments: {
         num: {
-          menu: 'deviceMenu',
+          menu: 'motorMenu',
           type: ArgumentType.NUMBER
         },
         val: {
@@ -2404,11 +2451,11 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'setBlockServo',
       blockType: BlockType.COMMAND,
-      text: 'Set Block [num] Servo angle [val]°',
+      text: 'Set servo [num] angle [val]°',
       terminal: false,
       arguments: {
         num: {
-          menu: 'deviceMenu',
+          menu: 'servoMenu',
           type: ArgumentType.NUMBER
         },
         val: {
@@ -2419,18 +2466,39 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'getSensorValue',
       blockType: BlockType.REPORTER,
-      text: 'Sensor value, Block [num]',
+      text: 'Block [num] sensor value',
       terminal: false,
       arguments: {
         num: {
-          menu: 'deviceMenu',
+          menu: 'sensorMenu',
           type: ArgumentType.NUMBER
         }
       }
     }, {
+      opcode: 'getButton',
+      blockType: BlockType.BOOLEAN,
+      text: 'Is button [num] pressed',
+      terminal: false,
+      arguments: {
+        num: {
+          menu: 'buttonMenu',
+          type: ArgumentType.NUMBER
+        }
+      }
+    },
+    // {
+    //     opcode: 'getCelsius',
+    //     blockType: BlockType.REPORTER,
+    //     text: 'Temperature [num] (°C)',
+    //     terminal: false,
+    //     arguments: {
+    //         num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
+    //     }
+    // },
+    {
       opcode: 'getBattery',
       blockType: BlockType.REPORTER,
-      text: 'Battery percentage, Block [num]',
+      text: '[num] battery percentage',
       terminal: false,
       arguments: {
         num: {
@@ -2458,7 +2526,12 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         color2: '#0DA57A',
         blocks: this.blocks,
         menus: {
-          deviceMenu: 'getDeviceMenu'
+          deviceMenu: 'getDeviceMenu',
+          buttonMenu: 'getButtonMenu',
+          motorMenu: 'getMotorMenu',
+          servoMenu: 'getServoMenu',
+          rgbMenu: 'getRGBMenu',
+          sensorMenu: 'getSensorMenu'
         }
       };
     }
@@ -2467,8 +2540,44 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     value: function updateDeviceMenu() {
       var _this = this;
       this.deviceMenu = [];
-      this.BabyBotdeviceMenu = [];
+      this.buttonMenu = [];
+      this.motorMenu = [];
+      this.servoMenu = [];
+      this.rgbMenu = [];
+      this.sensorMenu = [];
       this.deviceMap.forEach(function (device) {
+        switch (device.menuId) {
+          case 0:
+            _this.buttonMenu.push({
+              text: device.menuName,
+              value: device.id
+            });
+            break;
+          case 1:
+            _this.motorMenu.push({
+              text: device.menuName,
+              value: device.id
+            });
+            break;
+          case 2:
+            _this.servoMenu.push({
+              text: device.menuName,
+              value: device.id
+            });
+            break;
+          case 3:
+            _this.rgbMenu.push({
+              text: device.menuName,
+              value: device.id
+            });
+            break;
+          case 4:
+            _this.sensorMenu.push({
+              text: device.menuName,
+              value: device.id
+            });
+            break;
+        }
         _this.deviceMenu.push({
           text: device.displayName,
           value: device.id
@@ -2480,6 +2589,46 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     key: "getDeviceMenu",
     value: function getDeviceMenu() {
       return this.deviceMenu.length ? this.deviceMenu : [{
+        text: '-',
+        value: '-'
+      }];
+    }
+  }, {
+    key: "getButtonMenu",
+    value: function getButtonMenu() {
+      return this.buttonMenu.length ? this.buttonMenu : [{
+        text: '-',
+        value: '-'
+      }];
+    }
+  }, {
+    key: "getMotorMenu",
+    value: function getMotorMenu() {
+      return this.motorMenu.length ? this.motorMenu : [{
+        text: '-',
+        value: '-'
+      }];
+    }
+  }, {
+    key: "getSensorMenu",
+    value: function getSensorMenu() {
+      return this.sensorMenu.length ? this.sensorMenu : [{
+        text: '-',
+        value: '-'
+      }];
+    }
+  }, {
+    key: "getServoMenu",
+    value: function getServoMenu() {
+      return this.servoMenu.length ? this.servoMenu : [{
+        text: '-',
+        value: '-'
+      }];
+    }
+  }, {
+    key: "getRGBMenu",
+    value: function getRGBMenu() {
+      return this.rgbMenu.length ? this.rgbMenu : [{
         text: '-',
         value: '-'
       }];
@@ -2721,6 +2870,24 @@ var ExtensionBlocks = /*#__PURE__*/function () {
   }, {
     key: "getSensorValue",
     value: function getSensorValue(args) {
+      var block = this.getDeviceFromId(args.num);
+      if (!block) {
+        return 0;
+      }
+      return block.value;
+    }
+  }, {
+    key: "getButton",
+    value: function getButton(args) {
+      var block = this.getDeviceFromId(args.num);
+      if (!block) {
+        return 0;
+      }
+      return block.value === 100;
+    }
+  }, {
+    key: "getCelsius",
+    value: function getCelsius(args) {
       var block = this.getDeviceFromId(args.num);
       if (!block) {
         return 0;

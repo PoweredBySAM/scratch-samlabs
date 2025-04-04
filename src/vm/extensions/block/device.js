@@ -15,17 +15,23 @@ const SamLabsBLE = {
 };
 
 const BabyBotIndex = 1;
+const SensorBeginIndex = 2;
+const SensorEndIndex = 7;
+const ButtonIndex = 8;
+const rgbIndex = 9;
+const motorIndex = 10;
+const servoIndex = 11;
 
 const DeviceTypes = [
     {name: 'undefined', advName: ''},
     {name: 'Baby SAM Bot', advName: 'SAM BabyBot'},
     {name: 'slider', advName: 'SAM Potentiometer'},
     {name: 'light sensor', advName: 'SAM LDR'},
-    {name: 'button', advName: 'SAM Button'},
     {name: 'proximity', advName: 'SAM IR Sensor'},
     {name: 'heat', advName: 'SAM Temperature'},
     {name: 'tilt', advName: 'SAM Tilt'},
     {name: 'pressure', advName: 'SAM Pressure'},
+    {name: 'button', advName: 'SAM Button'},
     {name: 'RGB led', advName: 'SAM RGB LED'},
     {name: 'DC motor', advName: 'SAM DC Motor'},
     {name: 'servo', advName: 'SAM Servo Motor'}
@@ -78,6 +84,16 @@ class SAMDevice {
     _runtime = null;
 
     /**
+     * @type {number}
+     */
+    menuId = 0;
+
+    /**
+     * @type {string}
+     */
+    menuName = '';
+
+    /**
      * constructor
      * @param {Runtime} runtime Scratch runtime object
      * @param {string} id extension id
@@ -90,6 +106,31 @@ class SAMDevice {
             this.webBLE = true;
         }
         this._runtime.on(this._runtime.constructor.PERIPHERAL_SCAN_TIMEOUT, this.discoverTimeout.bind(this));
+    }
+
+    setMenuDetails () {
+        if (this.typeId === ButtonIndex) {
+            this.menuId = 0;
+        } else if (this.typeId === motorIndex) {
+            this.menuId = 1;
+        } else if (this.typeId === servoIndex) {
+            this.menuId = 2;
+        } else if (this.typeId === rgbIndex) {
+            this.menuId = 3;
+        } else if (this.typeId >= SensorBeginIndex && this.typeId <= SensorEndIndex) {
+            this.menuId = 4;
+        }
+        let sameDevices = 1;
+        this.deviceMap.forEach(value => {
+            if (value.menuId === this.menuId) {
+                sameDevices++;
+            }
+        });
+        if (this.menuId === 4) {
+            this.menuName = this.displayName;
+        } else {
+            this.menuName = String(sameDevices);
+        }
     }
 
     async connectToDevice (deviceMap, options) {
@@ -186,6 +227,8 @@ class SAMDevice {
         this.deviceType = DeviceTypes[this.typeId];
         this.sameDevices = sameDevices;
         this.device = device;
+
+        this.setMenuDetails();
 
         if (this.SensorAvailable && !this.SAMBotAvailable) {
             try {
@@ -341,6 +384,9 @@ class SAMDevice {
             this.SAMBotAvailable = (this.device.name === 'SAM BabyBot');
             this.ActorAvailable = true;
             this.SensorAvailable = true;
+
+            this.setMenuDetails();
+
             while (!this._ble.isConnected()) {
                 await new Promise(resolve => setTimeout(resolve, 500)); // Non-blocking delay
             }
