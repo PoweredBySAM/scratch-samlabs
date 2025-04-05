@@ -103,104 +103,6 @@ class ExtensionBlocks {
         this.runtime.on('PROJECT_STOP_ALL', this._stopAll);
         this.runtime.on('PROJECT_RUN_STOP', this._stopAll);
         this.deviceMenu = [];
-        this.blocks = [
-            {
-                opcode: 'connectToDevice',
-                blockType: BlockType.COMMAND,
-                text: formatMessage({
-                    id: 'samlabs.connectToDevice', // same as samlabs extension's connec to device block, not typo
-                    default: 'Connect a device'
-                })
-            },
-            {
-                opcode: 'getBattery',
-                blockType: BlockType.REPORTER,
-                text: formatMessage({
-                    id: 'sambot.getBattery',
-                    default: 'Battery percentage, Baby SAM Bot[num]'
-                }),
-                terminal: false,
-                arguments: {
-                    num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
-                }
-            },
-            {
-                opcode: 'BabyBotExecCommand',
-                blockType: BlockType.COMMAND,
-                text: formatMessage({
-                    id: 'sambot.BabyBotExecCommand',
-                    default: 'Baby SAM Bot[num] [command]'
-                }),
-                terminal: false,
-                arguments: {
-                    num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
-                    command: {menu: 'babyBotCommand', type: ArgumentType.STRING}
-                }
-            },
-            {
-                opcode: 'BabyBotPushCommand',
-                blockType: BlockType.COMMAND,
-                text: formatMessage({
-                    id: 'sambot.BabyBotPushCommand',
-                    default: 'Baby SAM Bot[num] push [command] to itiner'
-                }),
-                terminal: false,
-                arguments: {
-                    num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
-                    command: {menu: 'babyBotCommand', type: ArgumentType.STRING}
-                }
-            },
-            {
-                opcode: 'BabyBotStart',
-                blockType: BlockType.COMMAND,
-                text: formatMessage({
-                    id: 'sambot.BabyBotStart',
-                    default: 'Baby SAM Bot[num] start'
-                }),
-                terminal: false,
-                arguments: {
-                    num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
-                }
-            },
-            {
-                opcode: 'BabyBotStop',
-                blockType: BlockType.COMMAND,
-                text: formatMessage({
-                    id: 'sambot.BabyBotStop',
-                    default: 'Baby SAM Bot[num] stop'
-                }),
-                terminal: false,
-                arguments: {
-                    num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
-                }
-            },
-            {
-                opcode: 'BabyBotClear',
-                blockType: BlockType.COMMAND,
-                text: formatMessage({
-                    id: 'sambot.BabyBotClear',
-                    default: 'Baby SAM Bot[num] clear itiner'
-                }),
-                terminal: false,
-                arguments: {
-                    num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
-                }
-            },
-            {
-                opcode: 'BabyBotWrite',
-                blockType: BlockType.COMMAND,
-                text: formatMessage({
-                    id: 'sambot.BabyBotWrite',
-                    default: 'Baby SAM Bot[num] set motor speed right [r], left [l]'
-                }),
-                terminal: false,
-                arguments: {
-                    num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
-                    r: {defaultValue: 0, type: ArgumentType.NUMBER},
-                    l: {defaultValue: 0, type: ArgumentType.NUMBER}
-                }
-            }
-        ];
         this.DeviceMapping = new Map();
     }
 
@@ -216,7 +118,104 @@ class ExtensionBlocks {
             showStatusButton: false,
             color1: '#0FBD8C',
             color2: '#0DA57A',
-            blocks: this.blocks,
+            blocks: [
+                {
+                    opcode: 'connectToDevice',
+                    blockType: BlockType.COMMAND,
+                    text: formatMessage({
+                        id: 'samlabs.connectToDevice', // same as samlabs extension's connec to device block, not typo
+                        default: 'Connect a device'
+                    })
+                },
+                {
+                    opcode: 'getBattery',
+                    blockType: BlockType.REPORTER,
+                    text: formatMessage({
+                        id: 'sambot.getBattery',
+                        default: 'Battery percentage, Baby SAM Bot[num]'
+                    }),
+                    terminal: false,
+                    arguments: {
+                        num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
+                    }
+                },
+                {
+                    opcode: 'BabyBotExecCommand',
+                    blockType: BlockType.COMMAND,
+                    text: formatMessage({
+                        id: 'sambot.BabyBotExecCommand',
+                        default: 'Baby SAM Bot[num] [command]'
+                    }),
+                    terminal: false,
+                    arguments: {
+                        num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
+                        command: {menu: 'babyBotCommand', type: ArgumentType.STRING}
+                    }
+                },
+                {
+                    opcode: 'BabyBotPushCommand',
+                    blockType: BlockType.COMMAND,
+                    text: formatMessage({
+                        id: 'sambot.BabyBotPushCommand',
+                        default: 'Baby SAM Bot[num] push [command] to itiner'
+                    }),
+                    terminal: false,
+                    arguments: {
+                        num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
+                        command: {menu: 'babyBotCommand', type: ArgumentType.STRING}
+                    }
+                },
+                {
+                    opcode: 'BabyBotStart',
+                    blockType: BlockType.COMMAND,
+                    text: formatMessage({
+                        id: 'sambot.BabyBotStart',
+                        default: 'Baby SAM Bot[num] start'
+                    }),
+                    terminal: false,
+                    arguments: {
+                        num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
+                    }
+                },
+                {
+                    opcode: 'BabyBotStop',
+                    blockType: BlockType.COMMAND,
+                    text: formatMessage({
+                        id: 'sambot.BabyBotStop',
+                        default: 'Baby SAM Bot[num] stop'
+                    }),
+                    terminal: false,
+                    arguments: {
+                        num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
+                    }
+                },
+                {
+                    opcode: 'BabyBotClear',
+                    blockType: BlockType.COMMAND,
+                    text: formatMessage({
+                        id: 'sambot.BabyBotClear',
+                        default: 'Baby SAM Bot[num] clear itiner'
+                    }),
+                    terminal: false,
+                    arguments: {
+                        num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
+                    }
+                },
+                {
+                    opcode: 'BabyBotWrite',
+                    blockType: BlockType.COMMAND,
+                    text: formatMessage({
+                        id: 'sambot.BabyBotWrite',
+                        default: 'Baby SAM Bot[num] set motor speed right [r], left [l]'
+                    }),
+                    terminal: false,
+                    arguments: {
+                        num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
+                        r: {defaultValue: 0, type: ArgumentType.NUMBER},
+                        l: {defaultValue: 0, type: ArgumentType.NUMBER}
+                    }
+                }
+            ],
             menus: {
                 deviceMenu: 'getDeviceMenu',
                 babyBotCommand: 'getBabyBotCommandMenu'
