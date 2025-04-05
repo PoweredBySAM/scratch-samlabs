@@ -107,12 +107,18 @@ class ExtensionBlocks {
             {
                 opcode: 'connectToDevice',
                 blockType: BlockType.COMMAND,
-                text: 'Connect a device'
+                text: formatMessage({
+                    id: 'samlabs.connectToDevice', // same as samlabs extension's connec to device block, not typo
+                    default: 'Connect a device'
+                })
             },
             {
                 opcode: 'getBattery',
                 blockType: BlockType.REPORTER,
-                text: 'Battery percentage, Block [num]',
+                text: formatMessage({
+                    id: 'sambot.getBattery',
+                    default: 'Battery percentage, Baby SAM Bot[num]'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
@@ -121,7 +127,10 @@ class ExtensionBlocks {
             {
                 opcode: 'BabyBotExecCommand',
                 blockType: BlockType.COMMAND,
-                text: '[num] [command]',
+                text: formatMessage({
+                    id: 'sambot.BabyBotExecCommand',
+                    default: 'Baby SAM Bot[num] [command]'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
@@ -131,7 +140,10 @@ class ExtensionBlocks {
             {
                 opcode: 'BabyBotPushCommand',
                 blockType: BlockType.COMMAND,
-                text: '[num] push [command] to itiner',
+                text: formatMessage({
+                    id: 'sambot.BabyBotPushCommand',
+                    default: 'Baby SAM Bot[num] push [command] to itiner'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
@@ -141,7 +153,10 @@ class ExtensionBlocks {
             {
                 opcode: 'BabyBotStart',
                 blockType: BlockType.COMMAND,
-                text: '[num] Start',
+                text: formatMessage({
+                    id: 'sambot.BabyBotStart',
+                    default: 'Baby SAM Bot[num] start'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
@@ -150,7 +165,10 @@ class ExtensionBlocks {
             {
                 opcode: 'BabyBotStop',
                 blockType: BlockType.COMMAND,
-                text: '[num] Stop',
+                text: formatMessage({
+                    id: 'sambot.BabyBotStop',
+                    default: 'Baby SAM Bot[num] stop'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
@@ -159,7 +177,10 @@ class ExtensionBlocks {
             {
                 opcode: 'BabyBotClear',
                 blockType: BlockType.COMMAND,
-                text: '[num] Clear itiner',
+                text: formatMessage({
+                    id: 'sambot.BabyBotClear',
+                    default: 'Baby SAM Bot[num] clear itiner'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
@@ -168,7 +189,10 @@ class ExtensionBlocks {
             {
                 opcode: 'BabyBotWrite',
                 blockType: BlockType.COMMAND,
-                text: '[num] set motor speed right [r], left [l]',
+                text: formatMessage({
+                    id: 'sambot.BabyBotWrite',
+                    default: 'Baby SAM Bot[num] set motor speed right [r], left [l]'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
@@ -263,6 +287,7 @@ class ExtensionBlocks {
                 device._ble.disconnect();
                 return;
             }
+            device.displayName = String(device.sameDevices);
             this.deviceMap.set(device.id, device);
             this.updateDeviceMenu();
         }

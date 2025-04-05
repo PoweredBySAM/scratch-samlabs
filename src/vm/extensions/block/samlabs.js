@@ -60,8 +60,7 @@ class ExtensionBlocks {
     static get EXTENSION_NAME () {
         return formatMessage({
             id: 'samlabs.name',
-            default: 'SAM Labs',
-            description: 'name of the extension'
+            default: 'SAM Labs'
         });
     }
 
@@ -120,12 +119,18 @@ class ExtensionBlocks {
             {
                 opcode: 'connectToDevice',
                 blockType: BlockType.COMMAND,
-                text: 'Connect a device'
+                text: formatMessage({
+                    id: 'samlabs.connectToDevice',
+                    default: 'Connect a device'
+                })
             },
             {
                 opcode: 'setLEDColor',
                 blockType: BlockType.COMMAND,
-                text: 'Set [num] Status Led Color: R[red], G[green], B[blue]',
+                text: formatMessage({
+                    id: 'samlabs.setLEDColor',
+                    default: 'Set [num] Status Led Color: R[red], G[green], B[blue]'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
@@ -137,7 +142,10 @@ class ExtensionBlocks {
             {
                 opcode: 'setLEDRGBColor',
                 blockType: BlockType.COMMAND,
-                text: 'Set rgb led [num] color: R[red], G[green], B[blue]',
+                text: formatMessage({
+                    id: 'samlabs.setLEDRGBColor',
+                    default: 'Set rgb led [num] color: R[red], G[green], B[blue]'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'rgbMenu', type: ArgumentType.NUMBER},
@@ -149,7 +157,10 @@ class ExtensionBlocks {
             {
                 opcode: 'setBlockMotorSpeed',
                 blockType: BlockType.COMMAND,
-                text: 'Set motor [num] speed [val]',
+                text: formatMessage({
+                    id: 'samlabs.setBlockMotorSpeed',
+                    default: 'Set motor [num] speed [val]'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'motorMenu', type: ArgumentType.NUMBER},
@@ -159,7 +170,10 @@ class ExtensionBlocks {
             {
                 opcode: 'setBlockServo',
                 blockType: BlockType.COMMAND,
-                text: 'Set servo [num] angle [val]°',
+                text: formatMessage({
+                    id: 'samlabs.setBlockServo',
+                    default: 'Set servo [num] angle [val]°'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'servoMenu', type: ArgumentType.NUMBER},
@@ -169,7 +183,10 @@ class ExtensionBlocks {
             {
                 opcode: 'getSensorValue',
                 blockType: BlockType.REPORTER,
-                text: 'Block [num] sensor value',
+                text: formatMessage({
+                    id: 'samlabs.getSensorValue',
+                    default: 'Block [num] sensor value'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'sensorMenu', type: ArgumentType.NUMBER}
@@ -178,7 +195,10 @@ class ExtensionBlocks {
             {
                 opcode: 'getButton',
                 blockType: BlockType.BOOLEAN,
-                text: 'Is button [num] pressed',
+                text: formatMessage({
+                    id: 'samlabs.getButton',
+                    default: 'Is button [num] pressed'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'buttonMenu', type: ArgumentType.NUMBER}
@@ -196,7 +216,10 @@ class ExtensionBlocks {
             {
                 opcode: 'getBattery',
                 blockType: BlockType.REPORTER,
-                text: '[num] battery percentage',
+                text: formatMessage({
+                    id: 'samlabs.getBattery',
+                    default: '[num] battery percentage'
+                }),
                 terminal: false,
                 arguments: {
                     num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}

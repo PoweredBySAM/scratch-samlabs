@@ -600,7 +600,22 @@ var ArgumentType = /*@__PURE__*/getDefaultExportFromCjs(argumentTypeExports);
 
 var en = {
 	"samlabs.name": "SAM Labs",
-	"sambot.name": "Baby SAM Bot"
+	"samlabs.connectToDevice": "Connect a device",
+	"samlabs.setLEDColor": "Set [num] Status Led Color: R[red], G[green], B[blue]",
+	"samlabs.setLEDRGBColor": "Set rgb led [num] color: R[red], G[green], B[blue]",
+	"samlabs.setBlockMotorSpeed": "Set motor [num] speed [val]",
+	"samlabs.setBlockServo": "Set servo [num] angle [val]°",
+	"samlabs.getSensorValue": "Block [num] sensor value",
+	"samlabs.getButton": "Is button [num] pressed",
+	"samlabs.getBattery": "[num] battery percentage",
+	"sambot.name": "Baby SAM Bot",
+	"sambot.getBattery": "Battery percentage, Baby SAM Bot[num]",
+	"sambot.BabyBotExecCommand": "Baby SAM Bot[num] [command]",
+	"sambot.BabyBotPushCommand": "Baby SAM Bot[num] push [command] to itiner",
+	"sambot.BabyBotStart": "Baby SAM Bot[num] start",
+	"sambot.BabyBotStop": "Baby SAM Bot[num] stop",
+	"sambot.BabyBotClear": "Baby SAM Bot[num] clear itiner",
+	"sambot.BabyBotWrite": "Baby SAM Bot[num] set motor speed right [r], left [l]"
 };
 var translations = {
 	en: en
@@ -2381,11 +2396,18 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     this.blocks = [{
       opcode: 'connectToDevice',
       blockType: BlockType.COMMAND,
-      text: 'Connect a device'
+      text: formatMessage({
+        id: 'samlabs.connectToDevice',
+        // same as samlabs extension's connec to device block, not typo
+        default: 'Connect a device'
+      })
     }, {
       opcode: 'getBattery',
       blockType: BlockType.REPORTER,
-      text: 'Battery percentage, Block [num]',
+      text: formatMessage({
+        id: 'sambot.getBattery',
+        default: 'Battery percentage, Baby SAM Bot[num]'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2396,7 +2418,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'BabyBotExecCommand',
       blockType: BlockType.COMMAND,
-      text: '[num] [command]',
+      text: formatMessage({
+        id: 'sambot.BabyBotExecCommand',
+        default: 'Baby SAM Bot[num] [command]'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2411,7 +2436,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'BabyBotPushCommand',
       blockType: BlockType.COMMAND,
-      text: '[num] push [command] to itiner',
+      text: formatMessage({
+        id: 'sambot.BabyBotPushCommand',
+        default: 'Baby SAM Bot[num] push [command] to itiner'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2426,7 +2454,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'BabyBotStart',
       blockType: BlockType.COMMAND,
-      text: '[num] Start',
+      text: formatMessage({
+        id: 'sambot.BabyBotStart',
+        default: 'Baby SAM Bot[num] start'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2437,7 +2468,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'BabyBotStop',
       blockType: BlockType.COMMAND,
-      text: '[num] Stop',
+      text: formatMessage({
+        id: 'sambot.BabyBotStop',
+        default: 'Baby SAM Bot[num] stop'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2448,7 +2482,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'BabyBotClear',
       blockType: BlockType.COMMAND,
-      text: '[num] Clear itiner',
+      text: formatMessage({
+        id: 'sambot.BabyBotClear',
+        default: 'Baby SAM Bot[num] clear itiner'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2459,7 +2496,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'BabyBotWrite',
       blockType: BlockType.COMMAND,
-      text: '[num] set motor speed right [r], left [l]',
+      text: formatMessage({
+        id: 'sambot.BabyBotWrite',
+        default: 'Baby SAM Bot[num] set motor speed right [r], left [l]'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2580,7 +2620,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             case 3:
               connected = _context.sent;
               if (!connected) {
-                _context.next = 10;
+                _context.next = 11;
                 break;
               }
               if (!(device.device.name !== deviceExports.DeviceTypes[deviceExports.BabyBotIndex].advName)) {
@@ -2590,9 +2630,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
               device._ble.disconnect();
               return _context.abrupt("return");
             case 8:
+              device.displayName = String(device.sameDevices);
               this.deviceMap.set(device.id, device);
               this.updateDeviceMenu();
-            case 10:
+            case 11:
             case "end":
               return _context.stop();
           }

@@ -1,6 +1,21 @@
 {
   "en": {
     "samlabs.name": "SAM Labs",
-    "sambot.name": "Baby SAM Bot"
+    "samlabs.connectToDevice": "Connect a device",
+    "samlabs.setLEDColor": "Set [num] Status Led Color: R[red], G[green], B[blue]",
+    "samlabs.setLEDRGBColor": "Set rgb led [num] color: R[red], G[green], B[blue]",
+    "samlabs.setBlockMotorSpeed": "Set motor [num] speed [val]",
+    "samlabs.setBlockServo": "Set servo [num] angle [val]°",
+    "samlabs.getSensorValue": "Block [num] sensor value",
+    "samlabs.getButton": "Is button [num] pressed",
+    "samlabs.getBattery": "[num] battery percentage",
+    "sambot.name": "Baby SAM Bot",
+    "sambot.getBattery": "Battery percentage, Baby SAM Bot[num]",
+    "sambot.BabyBotExecCommand": "Baby SAM Bot[num] [command]",
+    "sambot.BabyBotPushCommand": "Baby SAM Bot[num] push [command] to itiner",
+    "sambot.BabyBotStart": "Baby SAM Bot[num] start",
+    "sambot.BabyBotStop": "Baby SAM Bot[num] stop",
+    "sambot.BabyBotClear": "Baby SAM Bot[num] clear itiner",
+    "sambot.BabyBotWrite": "Baby SAM Bot[num] set motor speed right [r], left [l]"
   }
 }

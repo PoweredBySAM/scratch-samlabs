@@ -609,7 +609,22 @@ var ArgumentType = /*@__PURE__*/getDefaultExportFromCjs(argumentTypeExports);
 
 var en = {
 	"samlabs.name": "SAM Labs",
-	"sambot.name": "Baby SAM Bot"
+	"samlabs.connectToDevice": "Connect a device",
+	"samlabs.setLEDColor": "Set [num] Status Led Color: R[red], G[green], B[blue]",
+	"samlabs.setLEDRGBColor": "Set rgb led [num] color: R[red], G[green], B[blue]",
+	"samlabs.setBlockMotorSpeed": "Set motor [num] speed [val]",
+	"samlabs.setBlockServo": "Set servo [num] angle [val]°",
+	"samlabs.getSensorValue": "Block [num] sensor value",
+	"samlabs.getButton": "Is button [num] pressed",
+	"samlabs.getBattery": "[num] battery percentage",
+	"sambot.name": "Baby SAM Bot",
+	"sambot.getBattery": "Battery percentage, Baby SAM Bot[num]",
+	"sambot.BabyBotExecCommand": "Baby SAM Bot[num] [command]",
+	"sambot.BabyBotPushCommand": "Baby SAM Bot[num] push [command] to itiner",
+	"sambot.BabyBotStart": "Baby SAM Bot[num] start",
+	"sambot.BabyBotStop": "Baby SAM Bot[num] stop",
+	"sambot.BabyBotClear": "Baby SAM Bot[num] clear itiner",
+	"sambot.BabyBotWrite": "Baby SAM Bot[num] set motor speed right [r], left [l]"
 };
 var translations = {
 	en: en
@@ -2386,11 +2401,17 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     this.blocks = [{
       opcode: 'connectToDevice',
       blockType: BlockType.COMMAND,
-      text: 'Connect a device'
+      text: formatMessage({
+        id: 'samlabs.connectToDevice',
+        default: 'Connect a device'
+      })
     }, {
       opcode: 'setLEDColor',
       blockType: BlockType.COMMAND,
-      text: 'Set [num] Status Led Color: R[red], G[green], B[blue]',
+      text: formatMessage({
+        id: 'samlabs.setLEDColor',
+        default: 'Set [num] Status Led Color: R[red], G[green], B[blue]'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2413,7 +2434,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'setLEDRGBColor',
       blockType: BlockType.COMMAND,
-      text: 'Set rgb led [num] color: R[red], G[green], B[blue]',
+      text: formatMessage({
+        id: 'samlabs.setLEDRGBColor',
+        default: 'Set rgb led [num] color: R[red], G[green], B[blue]'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2436,7 +2460,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'setBlockMotorSpeed',
       blockType: BlockType.COMMAND,
-      text: 'Set motor [num] speed [val]',
+      text: formatMessage({
+        id: 'samlabs.setBlockMotorSpeed',
+        default: 'Set motor [num] speed [val]'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2451,7 +2478,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'setBlockServo',
       blockType: BlockType.COMMAND,
-      text: 'Set servo [num] angle [val]°',
+      text: formatMessage({
+        id: 'samlabs.setBlockServo',
+        default: 'Set servo [num] angle [val]°'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2466,7 +2496,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'getSensorValue',
       blockType: BlockType.REPORTER,
-      text: 'Block [num] sensor value',
+      text: formatMessage({
+        id: 'samlabs.getSensorValue',
+        default: 'Block [num] sensor value'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2477,7 +2510,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     }, {
       opcode: 'getButton',
       blockType: BlockType.BOOLEAN,
-      text: 'Is button [num] pressed',
+      text: formatMessage({
+        id: 'samlabs.getButton',
+        default: 'Is button [num] pressed'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2498,7 +2534,10 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     {
       opcode: 'getBattery',
       blockType: BlockType.REPORTER,
-      text: '[num] battery percentage',
+      text: formatMessage({
+        id: 'samlabs.getBattery',
+        default: '[num] battery percentage'
+      }),
       terminal: false,
       arguments: {
         num: {
@@ -2923,8 +2962,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     get: function get() {
       return formatMessage({
         id: 'samlabs.name',
-        default: 'SAM Labs',
-        description: 'name of the extension'
+        default: 'SAM Labs'
       });
     }
 
