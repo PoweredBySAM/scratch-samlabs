@@ -218,7 +218,39 @@ class ExtensionBlocks {
             ],
             menus: {
                 deviceMenu: 'getDeviceMenu',
-                babyBotCommand: 'getBabyBotCommandMenu'
+                babyBotCommand: {
+                    acceptReporters: true,
+                    items: [
+                        {
+                            text: formatMessage({
+                                id: 'sambot.commandMenu.forward',
+                                default: 'move forward'
+                            }),
+                            value: 'F'
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'sambot.commandMenu.backward',
+                                default: 'move backward'
+                            }),
+                            value: 'B'
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'sambot.commandMenu.right',
+                                default: 'turn right'
+                            }),
+                            value: 'R'
+                        },
+                        {
+                            text: formatMessage({
+                                id: 'sambot.commandMenu.left',
+                                default: 'turn left'
+                            }),
+                            value: 'L'
+                        }
+                    ]
+                }
             }
         };
     }
@@ -232,25 +264,6 @@ class ExtensionBlocks {
 
     getDeviceMenu () {
         return this.deviceMenu.length ? this.deviceMenu : [{text: '-', value: '-'}];
-    }
-
-    getBabyBotCommandMenu () {
-        return [{
-            text: 'move Forward',
-            value: 'F'
-        },
-        {
-            text: 'move Backward',
-            value: 'B'
-        },
-        {
-            text: 'turn Right',
-            value: 'R'
-        },
-        {
-            text: 'turn Left',
-            value: 'L'
-        }];
     }
 
     /**

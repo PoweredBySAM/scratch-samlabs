@@ -624,7 +624,11 @@ var en = {
 	"sambot.BabyBotStart": "Baby SAM Bot[num] start",
 	"sambot.BabyBotStop": "Baby SAM Bot[num] stop",
 	"sambot.BabyBotClear": "Baby SAM Bot[num] clear itiner",
-	"sambot.BabyBotWrite": "Baby SAM Bot[num] set motor speed right [r], left [l]"
+	"sambot.BabyBotWrite": "Baby SAM Bot[num] set motor speed right [r], left [l]",
+	"sambot.commandMenu.forward": "move forward",
+	"sambot.commandMenu.backward": "move backward",
+	"sambot.commandMenu.right": "turn right",
+	"sambot.commandMenu.left": "turn left"
 };
 var hu = {
 	"samlabs.name": "SAM Labs",
@@ -643,17 +647,21 @@ var hu = {
 	"sambot.BabyBotStart": "Baby SAM Bot[num] induljon el",
 	"sambot.BabyBotStop": "Baby SAM Bot[num] álljon meg",
 	"sambot.BabyBotClear": "Baby SAM Bot[num] törölje az útvonalat",
-	"sambot.BabyBotWrite": "Baby SAM Bot[num] motorok sebessége legyen: bal[l], jobb[r]"
+	"sambot.BabyBotWrite": "Baby SAM Bot[num] motorok sebessége legyen: bal[l], jobb[r]",
+	"sambot.commandMenu.forward": "menj előre",
+	"sambot.commandMenu.backward": "menj hátra",
+	"sambot.commandMenu.right": "fordulj jobbra",
+	"sambot.commandMenu.left": "fordulj balra"
 };
 var es = {
 	"samlabs.name": "SAM Labs",
 	"samlabs.connectToDevice": "Conectar un dispositivo",
-	"samlabs.setLEDColor": "[num] Establecer color led de estado: rojo[red], verde[green], azul[blue]",
+	"samlabs.setLEDColor": "[num] Establecer el color del LED: rojo[red], verde[green], azul[blue]",
 	"samlabs.setLEDRGBColor": "Configurar LED RGB[num] color: rojo[red], verde[green], azul[blue]",
 	"samlabs.setBlockMotorSpeed": "Ajustar motor[num] velocidad [val]",
 	"samlabs.setBlockServo": "Configurar servo[num] ángulo [val]°",
 	"samlabs.getSensorValue": "[num] valor del sensor",
-	"samlabs.getButton": "Es botón [num] pulsado?",
+	"samlabs.getButton": "¿Está pulsado el botón [num] ?",
 	"samlabs.getBattery": "[num] porcentaje de batería",
 	"sambot.name": "Baby SAM Bot",
 	"sambot.getBattery": "Porcentaje de batería, Baby SAM Bot[num]",
@@ -662,26 +670,26 @@ var es = {
 	"sambot.BabyBotStart": "Baby SAM Bot[num] iniciar",
 	"sambot.BabyBotStop": "Baby SAM Bot[num] stop",
 	"sambot.BabyBotClear": "Baby SAM Bot[num] itinerario claro",
-	"sambot.BabyBotWrite": "Baby SAM Bot[num] ajustar bien la velocidad del motor [r], izquierda [l]"
+	"sambot.BabyBotWrite": "Baby SAM Bot[num] Ajustar la velocidad del motor derecho [r], e izquierdo [l]"
 };
 var it = {
 	"samlabs.name": "SAM Labs",
-	"samlabs.connectToDevice": "Collegare un dispositivo",
-	"samlabs.setLEDColor": "Set[num] colore del LED di stato: rosso[red], verde[green], blu[blue]",
-	"samlabs.setLEDRGBColor": "Set RGB LED[num] colore: rosso[red], verde[green], blu[blue]",
-	"samlabs.setBlockMotorSpeed": "Motore impostato[num] velocità [val]",
-	"samlabs.setBlockServo": "Servo impostato[num] angolo [val]°",
-	"samlabs.getSensorValue": "[num] valore del sensore",
-	"samlabs.getButton": "Pulsante Is [num] pressato?",
-	"samlabs.getBattery": "[num] percentuale di batteria",
+	"samlabs.connectToDevice": "Associare un dispositivo",
+	"samlabs.setLEDColor": "[num] Impostare colore del LED: rosso[red], verde[green], blu[blue]",
+	"samlabs.setLEDRGBColor": "Impostare colore RGB LED [num] : rosso[red], verde[green], blu[blue]",
+	"samlabs.setBlockMotorSpeed": "Impostare velocità [val] motore [num]",
+	"samlabs.setBlockServo": "Impostare servo [num] angolo [val]°",
+	"samlabs.getSensorValue": "[num] Valore del sensore",
+	"samlabs.getButton": "Il pulsante [num] è pressato?",
+	"samlabs.getBattery": "[num] Percentuale di batteria",
 	"sambot.name": "Baby SAM Bot",
 	"sambot.getBattery": "Percentuale di batteria, Baby SAM Bot[num]",
 	"sambot.BabyBotExecCommand": "Baby SAM Bot[num] [command]",
-	"sambot.BabyBotPushCommand": "Baby SAM Bot[num] spingere[command] all'itinerario",
-	"sambot.BabyBotStart": "Baby SAM Bot[num] inizio",
-	"sambot.BabyBotStop": "Baby SAM Bot[num] fermarsi",
-	"sambot.BabyBotClear": "Baby SAM Bot[num] itinerario chiaro",
-	"sambot.BabyBotWrite": "Baby SAM Bot[num] impostare la velocità del motore a destra [r], sinistra [l]"
+	"sambot.BabyBotPushCommand": "Baby SAM Bot[num] Imporre [command] all’itinerario",
+	"sambot.BabyBotStart": "Baby SAM Bot[num] Inizio",
+	"sambot.BabyBotStop": "Baby SAM Bot[num] Stop",
+	"sambot.BabyBotClear": "Baby SAM Bot[num] Reset itinerario",
+	"sambot.BabyBotWrite": "Baby SAM Bot[num] Impostare la velocità del moto a destra [r], a sinistra [l]"
 };
 var translations = {
 	en: en,
