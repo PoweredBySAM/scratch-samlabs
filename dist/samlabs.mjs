@@ -2824,9 +2824,9 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             case 3:
               _context2.next = 5;
               return this.setBlockLedColor(block, {
-                r: args.red,
-                g: args.green,
-                b: args.blue
+                r: args.red * 2.55,
+                g: args.green * 2.55,
+                b: args.blue * 2.55
               });
             case 5:
             case "end":
@@ -2888,7 +2888,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
               }
               return _context4.abrupt("return");
             case 3:
-              message = new Uint8Array([args.red, args.green, args.blue]);
+              message = new Uint8Array([args.red * 2.55, args.green * 2.55, args.blue * 2.55]);
               _context4.next = 6;
               return block.writeActor(message);
             case 6:

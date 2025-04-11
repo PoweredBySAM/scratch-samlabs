@@ -357,7 +357,7 @@ class ExtensionBlocks {
         if (!block) {
             return;
         }
-        await this.setBlockLedColor(block, {r: args.red, g: args.green, b: args.blue});
+        await this.setBlockLedColor(block, {r: args.red * 2.55, g: args.green * 2.55, b: args.blue * 2.55});
     }
 
     /**
@@ -386,9 +386,9 @@ class ExtensionBlocks {
         }
 
         const message = new Uint8Array([
-            args.red,
-            args.green,
-            args.blue
+            args.red * 2.55,
+            args.green * 2.55,
+            args.blue * 2.55
         ]);
         await block.writeActor(message);
     }
