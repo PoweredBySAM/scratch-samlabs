@@ -116,6 +116,9 @@ class ExtensionBlocks {
         this.rgbMenu = [];
         this.sensorMenu = [];
         this.DeviceMapping = new Map();
+
+        this.runtime.registerPeripheralExtension(this.extensionId, this);
+        this.connectToDevice = this.connectToDevice.bind(this);
     }
 
     /**
@@ -132,8 +135,8 @@ class ExtensionBlocks {
             color2: '#0DA57A',
             blocks: [
                 {
-                    opcode: 'connectToDevice',
-                    blockType: BlockType.COMMAND,
+                    func: 'CONNECT_SAMLABS',
+                    blockType: BlockType.BUTTON,
                     text: formatMessage({
                         id: 'samlabs.connectToDevice',
                         default: 'Connect a device'

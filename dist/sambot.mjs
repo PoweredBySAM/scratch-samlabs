@@ -2462,6 +2462,8 @@ var ExtensionBlocks = /*#__PURE__*/function () {
     this.runtime.on('PROJECT_RUN_STOP', this._stopAll);
     this.deviceMenu = [];
     this.DeviceMapping = new Map();
+    this.runtime.registerPeripheralExtension(this.extensionId, this);
+    this.connectToDevice = this.connectToDevice.bind(this);
   }
 
   /**
@@ -2479,8 +2481,8 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         color1: '#0FBD8C',
         color2: '#0DA57A',
         blocks: [{
-          opcode: 'connectToDevice',
-          blockType: BlockType.COMMAND,
+          func: 'CONNECT_SAMBOT',
+          blockType: BlockType.BUTTON,
           text: formatMessage({
             id: 'samlabs.connectToDevice',
             // same as samlabs extension's connec to device block, not typo
