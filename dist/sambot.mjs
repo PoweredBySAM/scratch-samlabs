@@ -1661,6 +1661,14 @@ function requireDevice() {
       _defineProperty(this, "deviceType", DeviceTypes[0]);
       _defineProperty(this, "displayName", "".concat(DeviceTypes[0].name, " 1"));
       _defineProperty(this, "sameDevices", 1);
+      /**
+       * @brief brightness for leds, 0...1
+       * @type {Number}
+       */
+      _defineProperty(this, "brightness", 1);
+      _defineProperty(this, "statusLedBrightness", 1);
+      _defineProperty(this, "lastActorValue", [0, 0, 0]);
+      _defineProperty(this, "lastStatusLEDValue", [0, 0, 0]);
       _defineProperty(this, "SensorAvailable", false);
       _defineProperty(this, "ActorAvailable", false);
       _defineProperty(this, "SAMBotAvailable", false);
@@ -1771,18 +1779,20 @@ function requireDevice() {
                 }
                 return _context.abrupt("return", false);
               case 13:
+                this.statusLedBrightness = 1;
+                this.lastStatusLEDValue = [100, 100, 100];
                 this.writeStatusLed(new Uint8Array([255, 255, 255]));
                 return _context.abrupt("return", true);
-              case 17:
-                _context.prev = 17;
+              case 19:
+                _context.prev = 19;
                 _context.t0 = _context["catch"](1);
                 console.log(_context.t0);
                 return _context.abrupt("return", false);
-              case 21:
+              case 23:
               case "end":
                 return _context.stop();
             }
-          }, _callee, this, [[1, 17]]);
+          }, _callee, this, [[1, 19]]);
         }));
         function connectToDevice(_x, _x2) {
           return _connectToDevice.apply(this, arguments);
@@ -2231,7 +2241,7 @@ function requireDevice() {
       value: function onDisconnected() {}
 
       /**
-       * send a message to the stus led characteristic
+       * send a message to the status led characteristic
        * @param {Uint8Array} msg the message
        * @param {boolean} [useLimiter=true] - if true, use the rate limiter
        */

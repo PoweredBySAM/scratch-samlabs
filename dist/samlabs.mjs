@@ -1661,6 +1661,14 @@ function requireDevice() {
       _defineProperty(this, "deviceType", DeviceTypes[0]);
       _defineProperty(this, "displayName", "".concat(DeviceTypes[0].name, " 1"));
       _defineProperty(this, "sameDevices", 1);
+      /**
+       * @brief brightness for leds, 0...1
+       * @type {Number}
+       */
+      _defineProperty(this, "brightness", 1);
+      _defineProperty(this, "statusLedBrightness", 1);
+      _defineProperty(this, "lastActorValue", [0, 0, 0]);
+      _defineProperty(this, "lastStatusLEDValue", [0, 0, 0]);
       _defineProperty(this, "SensorAvailable", false);
       _defineProperty(this, "ActorAvailable", false);
       _defineProperty(this, "SAMBotAvailable", false);
@@ -1771,18 +1779,20 @@ function requireDevice() {
                 }
                 return _context.abrupt("return", false);
               case 13:
+                this.statusLedBrightness = 1;
+                this.lastStatusLEDValue = [100, 100, 100];
                 this.writeStatusLed(new Uint8Array([255, 255, 255]));
                 return _context.abrupt("return", true);
-              case 17:
-                _context.prev = 17;
+              case 19:
+                _context.prev = 19;
                 _context.t0 = _context["catch"](1);
                 console.log(_context.t0);
                 return _context.abrupt("return", false);
-              case 21:
+              case 23:
               case "end":
                 return _context.stop();
             }
-          }, _callee, this, [[1, 17]]);
+          }, _callee, this, [[1, 19]]);
         }));
         function connectToDevice(_x, _x2) {
           return _connectToDevice.apply(this, arguments);
@@ -2231,7 +2241,7 @@ function requireDevice() {
       value: function onDisconnected() {}
 
       /**
-       * send a message to the stus led characteristic
+       * send a message to the status led characteristic
        * @param {Uint8Array} msg the message
        * @param {boolean} [useLimiter=true] - if true, use the rate limiter
        */
@@ -2519,6 +2529,24 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             }
           }
         }, {
+          opcode: 'setLEDBrightness',
+          blockType: BlockType.COMMAND,
+          text: formatMessage({
+            id: 'samlabs.setLEDColorBrightness',
+            default: 'Set[num] status led brightness [brightness]%'
+          }),
+          terminal: false,
+          arguments: {
+            num: {
+              menu: 'deviceMenu',
+              type: ArgumentType.NUMBER
+            },
+            brightness: {
+              defaultValue: 100,
+              type: ArgumentType.NUMBER
+            }
+          }
+        }, {
           opcode: 'setLEDRGBColor',
           blockType: BlockType.COMMAND,
           text: formatMessage({
@@ -2541,6 +2569,24 @@ var ExtensionBlocks = /*#__PURE__*/function () {
             },
             blue: {
               defaultValue: 0,
+              type: ArgumentType.NUMBER
+            }
+          }
+        }, {
+          opcode: 'setLEDRGBBrightness',
+          blockType: BlockType.COMMAND,
+          text: formatMessage({
+            id: 'samlabs.setLEDRGBColorBrightness',
+            default: 'Set rgb led[num] brightness [brightness]%'
+          }),
+          terminal: false,
+          arguments: {
+            num: {
+              menu: 'rgbMenu',
+              type: ArgumentType.NUMBER
+            },
+            brightness: {
+              defaultValue: 100,
               type: ArgumentType.NUMBER
             }
           }
@@ -2824,13 +2870,16 @@ var ExtensionBlocks = /*#__PURE__*/function () {
               }
               return _context2.abrupt("return");
             case 3:
-              _context2.next = 5;
+              block.lastStatusLEDValue[0] = Number(args.red);
+              block.lastStatusLEDValue[1] = Number(args.green);
+              block.lastStatusLEDValue[2] = Number(args.blue);
+              _context2.next = 8;
               return this.setBlockLedColor(block, {
-                r: args.red * 2.55,
-                g: args.green * 2.55,
-                b: args.blue * 2.55
+                r: block.lastStatusLEDValue[0] * 2.55,
+                g: block.lastStatusLEDValue[1] * 2.55,
+                b: block.lastStatusLEDValue[2] * 2.55
               });
-            case 5:
+            case 8:
             case "end":
               return _context2.stop();
           }
@@ -2855,7 +2904,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
         return _regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
-              message = new Uint8Array([color.r, color.g, color.b]);
+              message = new Uint8Array([color.r * block.statusLedBrightness, color.g * block.statusLedBrightness, color.b * block.statusLedBrightness]);
               _context3.next = 3;
               return block.writeStatusLed(message);
             case 3:
@@ -2890,10 +2939,13 @@ var ExtensionBlocks = /*#__PURE__*/function () {
               }
               return _context4.abrupt("return");
             case 3:
-              message = new Uint8Array([args.red * 2.55, args.green * 2.55, args.blue * 2.55]);
-              _context4.next = 6;
+              block.lastActorValue[0] = Number(args.red);
+              block.lastActorValue[1] = Number(args.green);
+              block.lastActorValue[2] = Number(args.blue);
+              message = new Uint8Array([block.lastActorValue[0] * 2.55 * block.brightness, block.lastActorValue[1] * 2.55 * block.brightness, block.lastActorValue[2] * 2.55 * block.brightness]);
+              _context4.next = 9;
               return block.writeActor(message);
-            case 6:
+            case 9:
             case "end":
               return _context4.stop();
           }
@@ -2905,19 +2957,85 @@ var ExtensionBlocks = /*#__PURE__*/function () {
       return setLEDRGBColor;
     }())
   }, {
-    key: "setBlockMotorSpeed",
+    key: "setLEDBrightness",
     value: function () {
-      var _setBlockMotorSpeed = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee5(args) {
-        var block, speed, message;
+      var _setLEDBrightness = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee5(args) {
+        var block, message;
         return _regeneratorRuntime.wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
               block = this.getDeviceFromId(args.num);
-              if (!(!block || !block.ActorAvailable)) {
+              if (block) {
                 _context5.next = 3;
                 break;
               }
               return _context5.abrupt("return");
+            case 3:
+              block.statusLedBrightness = Number(args.brightness) / 100;
+              if (block.statusLedBrightness > 1) {
+                block.statusLedBrightness = 1;
+              }
+              message = new Uint8Array([block.lastStatusLEDValue[0] * block.statusLedBrightness * 2.55, block.lastStatusLEDValue[1] * block.statusLedBrightness * 2.55, block.lastStatusLEDValue[2] * block.statusLedBrightness * 2.55]);
+              _context5.next = 8;
+              return block.writeStatusLed(message);
+            case 8:
+            case "end":
+              return _context5.stop();
+          }
+        }, _callee5, this);
+      }));
+      function setLEDBrightness(_x5) {
+        return _setLEDBrightness.apply(this, arguments);
+      }
+      return setLEDBrightness;
+    }()
+  }, {
+    key: "setLEDRGBBrightness",
+    value: function () {
+      var _setLEDRGBBrightness = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee6(args) {
+        var block, message;
+        return _regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
+            case 0:
+              block = this.getDeviceFromId(args.num);
+              if (block) {
+                _context6.next = 3;
+                break;
+              }
+              return _context6.abrupt("return");
+            case 3:
+              block.brightness = Number(args.brightness) / 100;
+              if (block.brightness > 1) {
+                block.brightness = 1;
+              }
+              message = new Uint8Array([block.lastActorValue[0] * 2.55 * block.brightness, block.lastActorValue[1] * 2.55 * block.brightness, block.lastActorValue[2] * 2.55 * block.brightness]);
+              _context6.next = 8;
+              return block.writeActor(message);
+            case 8:
+            case "end":
+              return _context6.stop();
+          }
+        }, _callee6, this);
+      }));
+      function setLEDRGBBrightness(_x6) {
+        return _setLEDRGBBrightness.apply(this, arguments);
+      }
+      return setLEDRGBBrightness;
+    }()
+  }, {
+    key: "setBlockMotorSpeed",
+    value: function () {
+      var _setBlockMotorSpeed = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee7(args) {
+        var block, speed, message;
+        return _regeneratorRuntime.wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
+            case 0:
+              block = this.getDeviceFromId(args.num);
+              if (!(!block || !block.ActorAvailable)) {
+                _context7.next = 3;
+                break;
+              }
+              return _context7.abrupt("return");
             case 3:
               speed = Number(args.val);
               if (speed < 0) {
@@ -2932,15 +3050,15 @@ var ExtensionBlocks = /*#__PURE__*/function () {
                 speed = speed * 1.27;
               }
               message = new Uint8Array([speed, 0, 0]);
-              _context5.next = 8;
+              _context7.next = 8;
               return block.writeActor(message);
             case 8:
             case "end":
-              return _context5.stop();
+              return _context7.stop();
           }
-        }, _callee5, this);
+        }, _callee7, this);
       }));
-      function setBlockMotorSpeed(_x5) {
+      function setBlockMotorSpeed(_x7) {
         return _setBlockMotorSpeed.apply(this, arguments);
       }
       return setBlockMotorSpeed;
@@ -2948,29 +3066,29 @@ var ExtensionBlocks = /*#__PURE__*/function () {
   }, {
     key: "setBlockServo",
     value: function () {
-      var _setBlockServo = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee6(args) {
+      var _setBlockServo = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime.mark(function _callee8(args) {
         var block, angle, message;
-        return _regeneratorRuntime.wrap(function _callee6$(_context6) {
-          while (1) switch (_context6.prev = _context6.next) {
+        return _regeneratorRuntime.wrap(function _callee8$(_context8) {
+          while (1) switch (_context8.prev = _context8.next) {
             case 0:
               block = this.getDeviceFromId(args.num);
               if (!(!block || !block.ActorAvailable)) {
-                _context6.next = 3;
+                _context8.next = 3;
                 break;
               }
-              return _context6.abrupt("return");
+              return _context8.abrupt("return");
             case 3:
               angle = Number(args.val);
               message = new Uint8Array([angle, 0, 0]);
-              _context6.next = 7;
+              _context8.next = 7;
               return block.writeActor(message);
             case 7:
             case "end":
-              return _context6.stop();
+              return _context8.stop();
           }
-        }, _callee6, this);
+        }, _callee8, this);
       }));
-      function setBlockServo(_x6) {
+      function setBlockServo(_x8) {
         return _setBlockServo.apply(this, arguments);
       }
       return setBlockServo;

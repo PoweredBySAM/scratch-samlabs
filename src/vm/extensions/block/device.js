@@ -47,6 +47,14 @@ class SAMDevice {
     deviceType = DeviceTypes[0];
     displayName = `${DeviceTypes[0].name} 1`;
     sameDevices = 1;
+    /**
+     * @brief brightness for leds, 0...1
+     * @type {Number}
+     */
+    brightness = 1;
+    statusLedBrightness = 1;
+    lastActorValue = [0, 0, 0];
+    lastStatusLEDValue = [0, 0, 0];
     SensorAvailable = false;
     ActorAvailable = false;
     SAMBotAvailable = false;
@@ -143,6 +151,8 @@ class SAMDevice {
             } else if (!await this.connectScratchLink(options)) {
                 return false;
             }
+            this.statusLedBrightness = 1;
+            this.lastStatusLEDValue = [100, 100, 100];
             this.writeStatusLed(new Uint8Array([255, 255, 255]));
             return true;
         } catch (error) {
@@ -504,7 +514,7 @@ class SAMDevice {
     }
 
     /**
-     * send a message to the stus led characteristic
+     * send a message to the status led characteristic
      * @param {Uint8Array} msg the message
      * @param {boolean} [useLimiter=true] - if true, use the rate limiter
      */

@@ -158,6 +158,19 @@ class ExtensionBlocks {
                     }
                 },
                 {
+                    opcode: 'setLEDBrightness',
+                    blockType: BlockType.COMMAND,
+                    text: formatMessage({
+                        id: 'samlabs.setLEDColorBrightness',
+                        default: 'Set[num] status led brightness [brightness]%'
+                    }),
+                    terminal: false,
+                    arguments: {
+                        num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
+                        brightness: {defaultValue: 100, type: ArgumentType.NUMBER}
+                    }
+                },
+                {
                     opcode: 'setLEDRGBColor',
                     blockType: BlockType.COMMAND,
                     text: formatMessage({
@@ -170,6 +183,19 @@ class ExtensionBlocks {
                         red: {defaultValue: 0, type: ArgumentType.NUMBER},
                         green: {defaultValue: 0, type: ArgumentType.NUMBER},
                         blue: {defaultValue: 0, type: ArgumentType.NUMBER}
+                    }
+                },
+                {
+                    opcode: 'setLEDRGBBrightness',
+                    blockType: BlockType.COMMAND,
+                    text: formatMessage({
+                        id: 'samlabs.setLEDRGBColorBrightness',
+                        default: 'Set rgb led[num] brightness [brightness]%'
+                    }),
+                    terminal: false,
+                    arguments: {
+                        num: {menu: 'rgbMenu', type: ArgumentType.NUMBER},
+                        brightness: {defaultValue: 100, type: ArgumentType.NUMBER}
                     }
                 },
                 {
@@ -360,7 +386,15 @@ class ExtensionBlocks {
         if (!block) {
             return;
         }
-        await this.setBlockLedColor(block, {r: args.red * 2.55, g: args.green * 2.55, b: args.blue * 2.55});
+        block.lastStatusLEDValue[0] = Number(args.red);
+        block.lastStatusLEDValue[1] = Number(args.green);
+        block.lastStatusLEDValue[2] = Number(args.blue);
+        await this.setBlockLedColor(block,
+            {
+                r: block.lastStatusLEDValue[0] * 2.55,
+                g: block.lastStatusLEDValue[1] * 2.55,
+                b: block.lastStatusLEDValue[2] * 2.55
+            });
     }
 
     /**
@@ -370,9 +404,9 @@ class ExtensionBlocks {
      */
     async setBlockLedColor (block, color) {
         const message = new Uint8Array([
-            color.r,
-            color.g,
-            color.b
+            color.r * block.statusLedBrightness,
+            color.g * block.statusLedBrightness,
+            color.b * block.statusLedBrightness
         ]);
         await block.writeStatusLed(message);
     }
@@ -387,11 +421,49 @@ class ExtensionBlocks {
         if (!block || !block.ActorAvailable) {
             return;
         }
+            
+        block.lastActorValue[0] = Number(args.red);
+        block.lastActorValue[1] = Number(args.green);
+        block.lastActorValue[2] = Number(args.blue);
 
         const message = new Uint8Array([
-            args.red * 2.55,
-            args.green * 2.55,
-            args.blue * 2.55
+            block.lastActorValue[0] * 2.55 * block.brightness,
+            block.lastActorValue[1] * 2.55 * block.brightness,
+            block.lastActorValue[2] * 2.55 * block.brightness
+        ]);
+        await block.writeActor(message);
+    }
+
+    async setLEDBrightness (args) {
+        const block = this.getDeviceFromId(args.num);
+        if (!block) {
+            return;
+        }
+        block.statusLedBrightness = Number(args.brightness) / 100;
+        if (block.statusLedBrightness > 1) {
+            block.statusLedBrightness = 1;
+        }
+        const message = new Uint8Array([
+            block.lastStatusLEDValue[0] * block.statusLedBrightness * 2.55,
+            block.lastStatusLEDValue[1] * block.statusLedBrightness * 2.55,
+            block.lastStatusLEDValue[2] * block.statusLedBrightness * 2.55
+        ]);
+        await block.writeStatusLed(message);
+    }
+
+    async setLEDRGBBrightness (args) {
+        const block = this.getDeviceFromId(args.num);
+        if (!block) {
+            return;
+        }
+        block.brightness = Number(args.brightness) / 100;
+        if (block.brightness > 1) {
+            block.brightness = 1;
+        }
+        const message = new Uint8Array([
+            block.lastActorValue[0] * 2.55 * block.brightness,
+            block.lastActorValue[1] * 2.55 * block.brightness,
+            block.lastActorValue[2] * 2.55 * block.brightness
         ]);
         await block.writeActor(message);
     }
