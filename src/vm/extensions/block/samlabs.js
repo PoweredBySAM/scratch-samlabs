@@ -147,14 +147,14 @@ class ExtensionBlocks {
                     blockType: BlockType.COMMAND,
                     text: formatMessage({
                         id: 'samlabs.setLEDColor',
-                        default: 'Set[num] status led color: R[red], G[green], B[blue]'
+                        default: 'set [num] status color to R [red], G [green], B [blue]'
                     }),
                     terminal: false,
                     arguments: {
                         num: {menu: 'deviceMenu', type: ArgumentType.NUMBER},
-                        red: {defaultValue: 0, type: ArgumentType.NUMBER},
-                        green: {defaultValue: 0, type: ArgumentType.NUMBER},
-                        blue: {defaultValue: 0, type: ArgumentType.NUMBER}
+                        red: {defaultValue: 50, type: ArgumentType.NUMBER},
+                        green: {defaultValue: 50, type: ArgumentType.NUMBER},
+                        blue: {defaultValue: 50, type: ArgumentType.NUMBER}
                     }
                 },
                 {
@@ -162,7 +162,7 @@ class ExtensionBlocks {
                     blockType: BlockType.COMMAND,
                     text: formatMessage({
                         id: 'samlabs.setLEDColorBrightness',
-                        default: 'Set[num] status led brightness [brightness]%'
+                        default: 'set [num] status brightness to [brightness]%'
                     }),
                     terminal: false,
                     arguments: {
@@ -175,14 +175,14 @@ class ExtensionBlocks {
                     blockType: BlockType.COMMAND,
                     text: formatMessage({
                         id: 'samlabs.setLEDRGBColor',
-                        default: 'Set rgb led[num] color: R[red], G[green], B[blue]'
+                        default: 'set RGB LED [num] color to R [red], G [green], B [blue]'
                     }),
                     terminal: false,
                     arguments: {
                         num: {menu: 'rgbMenu', type: ArgumentType.NUMBER},
-                        red: {defaultValue: 0, type: ArgumentType.NUMBER},
-                        green: {defaultValue: 0, type: ArgumentType.NUMBER},
-                        blue: {defaultValue: 0, type: ArgumentType.NUMBER}
+                        red: {defaultValue: 100, type: ArgumentType.NUMBER},
+                        green: {defaultValue: 100, type: ArgumentType.NUMBER},
+                        blue: {defaultValue: 100, type: ArgumentType.NUMBER}
                     }
                 },
                 {
@@ -190,7 +190,7 @@ class ExtensionBlocks {
                     blockType: BlockType.COMMAND,
                     text: formatMessage({
                         id: 'samlabs.setLEDRGBColorBrightness',
-                        default: 'Set rgb led[num] brightness [brightness]%'
+                        default: 'set RGB LED [num] brightness to [brightness]%'
                     }),
                     terminal: false,
                     arguments: {
@@ -203,12 +203,12 @@ class ExtensionBlocks {
                     blockType: BlockType.COMMAND,
                     text: formatMessage({
                         id: 'samlabs.setBlockMotorSpeed',
-                        default: 'Set motor[num] speed [val]'
+                        default: 'set DC motor [num] speed to [val]'
                     }),
                     terminal: false,
                     arguments: {
                         num: {menu: 'motorMenu', type: ArgumentType.NUMBER},
-                        val: {defaultValue: 0, type: ArgumentType.NUMBER}
+                        val: {defaultValue: 100, type: ArgumentType.NUMBER}
                     }
                 },
                 {
@@ -216,12 +216,12 @@ class ExtensionBlocks {
                     blockType: BlockType.COMMAND,
                     text: formatMessage({
                         id: 'samlabs.setBlockServo',
-                        default: 'Set servo[num] angle [val]°'
+                        default: 'set servo motor [num] angle to [val] deg'
                     }),
                     terminal: false,
                     arguments: {
                         num: {menu: 'servoMenu', type: ArgumentType.NUMBER},
-                        val: {defaultValue: 0, type: ArgumentType.NUMBER}
+                        val: {defaultValue: 180, type: ArgumentType.NUMBER}
                     }
                 },
                 {
@@ -229,7 +229,7 @@ class ExtensionBlocks {
                     blockType: BlockType.REPORTER,
                     text: formatMessage({
                         id: 'samlabs.getSensorValue',
-                        default: '[num] sensor value'
+                        default: '[num] value'
                     }),
                     terminal: false,
                     arguments: {
@@ -241,22 +241,13 @@ class ExtensionBlocks {
                     blockType: BlockType.BOOLEAN,
                     text: formatMessage({
                         id: 'samlabs.getButton',
-                        default: 'Is button [num] pressed?'
+                        default: 'button [num] pressed?'
                     }),
                     terminal: false,
                     arguments: {
                         num: {menu: 'buttonMenu', type: ArgumentType.NUMBER}
                     }
                 },
-                // {
-                //     opcode: 'getCelsius',
-                //     blockType: BlockType.REPORTER,
-                //     text: 'Temperature [num] (°C)',
-                //     terminal: false,
-                //     arguments: {
-                //         num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
-                //     }
-                // },
                 {
                     opcode: 'getBattery',
                     blockType: BlockType.REPORTER,

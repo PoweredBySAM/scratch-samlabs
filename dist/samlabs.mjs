@@ -610,15 +610,17 @@ var ArgumentType = /*@__PURE__*/getDefaultExportFromCjs(argumentTypeExports);
 var en = {
 	"samlabs.name": "SAM Labs",
 	"samlabs.connectToDevice": "Connect a device",
-	"samlabs.setLEDColor": "Set[num] status LED color: R[red], G[green], B[blue]",
-	"samlabs.setLEDRGBColor": "Set RGB LED[num] color: R[red], G[green], B[blue]",
-	"samlabs.setBlockMotorSpeed": "Set motor[num] speed [val]",
-	"samlabs.setBlockServo": "Set servo[num] angle [val]°",
-	"samlabs.getSensorValue": "[num] sensor value",
-	"samlabs.getButton": "Is button [num] pressed?",
+	"samlabs.setLEDColor": "set [num] status color to R [red], G [green], B [blue]",
+	"samlabs.setLEDColorBrightness": "set [num] status brightness to [brightness]%",
+	"samlabs.setLEDRGBColor": "set RGB LED [num] color to R [red], G [green], B [blue]",
+	"samlabs.setLEDRGBColorBrightness": "set RGB LED [num] brightness to [brightness]%",
+	"samlabs.setBlockMotorSpeed": "set DC motor [num] speed to [val]",
+	"samlabs.setBlockServo": "set servo motor [num] angle to [val] deg",
+	"samlabs.getSensorValue": "[num] value",
+	"samlabs.getButton": "button [num] pressed?",
 	"samlabs.getBattery": "[num] battery percentage",
 	"sambot.name": "Baby SAM Bot",
-	"sambot.getBattery": "Battery percentage, Baby SAM Bot[num]",
+	"sambot.getBattery": "battery percentage, Baby SAM Bot[num]",
 	"sambot.BabyBotExecCommand": "Baby SAM Bot[num] [command]",
 	"sambot.BabyBotPushCommand": "Baby SAM Bot[num] push[command] to itiner",
 	"sambot.BabyBotStart": "Baby SAM Bot[num] start",
@@ -630,38 +632,15 @@ var en = {
 	"sambot.commandMenu.right": "turn right",
 	"sambot.commandMenu.left": "turn left"
 };
-var hu = {
-	"samlabs.name": "SAM Labs",
-	"samlabs.connectToDevice": "Eszköz csatlakoztatása",
-	"samlabs.setLEDColor": "[num] státusz LED színe legyen: piros[red], zöld[green], kék[blue]",
-	"samlabs.setLEDRGBColor": "RGB LED[num] színe legyen: piros[red], zöld[green], kék[blue]",
-	"samlabs.setBlockMotorSpeed": "[num] sebessége legyen [val]",
-	"samlabs.setBlockServo": "szervó[num] forduljon[val]°-os állásba",
-	"samlabs.getSensorValue": "Szenzor[num] értéke",
-	"samlabs.getButton": "Gomb [num] megnyomva?",
-	"samlabs.getBattery": "[num] akkumulátor töltöttsége (%)",
-	"sambot.name": "Baby SAM Bot",
-	"sambot.getBattery": "Baby SAM Bot[num] akkumulátor töltöttsége (%)",
-	"sambot.BabyBotExecCommand": "Baby SAM Bot[num] [command]",
-	"sambot.BabyBotPushCommand": "Add hozzá Baby SAM Bot[num] útvonalához a [command] parancsot",
-	"sambot.BabyBotStart": "Baby SAM Bot[num] induljon el",
-	"sambot.BabyBotStop": "Baby SAM Bot[num] álljon meg",
-	"sambot.BabyBotClear": "Baby SAM Bot[num] törölje az útvonalat",
-	"sambot.BabyBotWrite": "Baby SAM Bot[num] motorok sebessége legyen: bal[l], jobb[r]",
-	"sambot.commandMenu.forward": "menj előre",
-	"sambot.commandMenu.backward": "menj hátra",
-	"sambot.commandMenu.right": "fordulj jobbra",
-	"sambot.commandMenu.left": "fordulj balra"
-};
 var es = {
 	"samlabs.name": "SAM Labs",
 	"samlabs.connectToDevice": "Conectar un dispositivo",
-	"samlabs.setLEDColor": "[num] Establecer el color del LED: rojo[red], verde[green], azul[blue]",
-	"samlabs.setLEDRGBColor": "Configurar LED RGB[num] color: rojo[red], verde[green], azul[blue]",
-	"samlabs.setBlockMotorSpeed": "Ajustar motor[num] velocidad [val]",
-	"samlabs.setBlockServo": "Configurar servo[num] ángulo [val]°",
+	"samlabs.setLEDColor": "[num] establecer el color del LED: rojo[red], verde[green], azul[blue]",
+	"samlabs.setLEDRGBColor": "configurar LED RGB[num] color: rojo[red], verde[green], azul[blue]",
+	"samlabs.setBlockMotorSpeed": "ajustar motor[num] velocidad [val]",
+	"samlabs.setBlockServo": "configurar servo[num] ángulo [val]°",
 	"samlabs.getSensorValue": "[num] valor del sensor",
-	"samlabs.getButton": "¿Está pulsado el botón [num] ?",
+	"samlabs.getButton": "¿está pulsado el botón [num] ?",
 	"samlabs.getBattery": "[num] porcentaje de batería",
 	"sambot.name": "Baby SAM Bot",
 	"sambot.getBattery": "Porcentaje de batería, Baby SAM Bot[num]",
@@ -675,13 +654,13 @@ var es = {
 var it = {
 	"samlabs.name": "SAM Labs",
 	"samlabs.connectToDevice": "Associare un dispositivo",
-	"samlabs.setLEDColor": "[num] Impostare colore del LED: rosso[red], verde[green], blu[blue]",
-	"samlabs.setLEDRGBColor": "Impostare colore RGB LED [num] : rosso[red], verde[green], blu[blue]",
-	"samlabs.setBlockMotorSpeed": "Impostare velocità [val] motore [num]",
-	"samlabs.setBlockServo": "Impostare servo [num] angolo [val]°",
-	"samlabs.getSensorValue": "[num] Valore del sensore",
-	"samlabs.getButton": "Il pulsante [num] è pressato?",
-	"samlabs.getBattery": "[num] Percentuale di batteria",
+	"samlabs.setLEDColor": "[num] impostare colore del LED: rosso[red], verde[green], blu[blue]",
+	"samlabs.setLEDRGBColor": "impostare colore RGB LED [num] : rosso[red], verde[green], blu[blue]",
+	"samlabs.setBlockMotorSpeed": "impostare velocità [val] motore [num]",
+	"samlabs.setBlockServo": "impostare servo [num] angolo [val]°",
+	"samlabs.getSensorValue": "[num] valore del sensore",
+	"samlabs.getButton": "il pulsante [num] è pressato?",
+	"samlabs.getBattery": "[num] percentuale di batteria",
 	"sambot.name": "Baby SAM Bot",
 	"sambot.getBattery": "Percentuale di batteria, Baby SAM Bot[num]",
 	"sambot.BabyBotExecCommand": "Baby SAM Bot[num] [command]",
@@ -693,7 +672,6 @@ var it = {
 };
 var translations = {
 	en: en,
-	hu: hu,
 	es: es,
 	it: it
 };
@@ -2507,7 +2485,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockType: BlockType.COMMAND,
           text: formatMessage({
             id: 'samlabs.setLEDColor',
-            default: 'Set[num] status led color: R[red], G[green], B[blue]'
+            default: 'set [num] status color to R [red], G [green], B [blue]'
           }),
           terminal: false,
           arguments: {
@@ -2516,15 +2494,15 @@ var ExtensionBlocks = /*#__PURE__*/function () {
               type: ArgumentType.NUMBER
             },
             red: {
-              defaultValue: 0,
+              defaultValue: 50,
               type: ArgumentType.NUMBER
             },
             green: {
-              defaultValue: 0,
+              defaultValue: 50,
               type: ArgumentType.NUMBER
             },
             blue: {
-              defaultValue: 0,
+              defaultValue: 50,
               type: ArgumentType.NUMBER
             }
           }
@@ -2533,7 +2511,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockType: BlockType.COMMAND,
           text: formatMessage({
             id: 'samlabs.setLEDColorBrightness',
-            default: 'Set[num] status led brightness [brightness]%'
+            default: 'set [num] status brightness to [brightness]%'
           }),
           terminal: false,
           arguments: {
@@ -2551,7 +2529,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockType: BlockType.COMMAND,
           text: formatMessage({
             id: 'samlabs.setLEDRGBColor',
-            default: 'Set rgb led[num] color: R[red], G[green], B[blue]'
+            default: 'set RGB LED [num] color to R [red], G [green], B [blue]'
           }),
           terminal: false,
           arguments: {
@@ -2560,15 +2538,15 @@ var ExtensionBlocks = /*#__PURE__*/function () {
               type: ArgumentType.NUMBER
             },
             red: {
-              defaultValue: 0,
+              defaultValue: 100,
               type: ArgumentType.NUMBER
             },
             green: {
-              defaultValue: 0,
+              defaultValue: 100,
               type: ArgumentType.NUMBER
             },
             blue: {
-              defaultValue: 0,
+              defaultValue: 100,
               type: ArgumentType.NUMBER
             }
           }
@@ -2577,7 +2555,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockType: BlockType.COMMAND,
           text: formatMessage({
             id: 'samlabs.setLEDRGBColorBrightness',
-            default: 'Set rgb led[num] brightness [brightness]%'
+            default: 'set RGB LED [num] brightness to [brightness]%'
           }),
           terminal: false,
           arguments: {
@@ -2595,7 +2573,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockType: BlockType.COMMAND,
           text: formatMessage({
             id: 'samlabs.setBlockMotorSpeed',
-            default: 'Set motor[num] speed [val]'
+            default: 'set DC motor [num] speed to [val]'
           }),
           terminal: false,
           arguments: {
@@ -2604,7 +2582,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
               type: ArgumentType.NUMBER
             },
             val: {
-              defaultValue: 0,
+              defaultValue: 100,
               type: ArgumentType.NUMBER
             }
           }
@@ -2613,7 +2591,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockType: BlockType.COMMAND,
           text: formatMessage({
             id: 'samlabs.setBlockServo',
-            default: 'Set servo[num] angle [val]°'
+            default: 'set servo motor [num] angle to [val] deg'
           }),
           terminal: false,
           arguments: {
@@ -2622,7 +2600,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
               type: ArgumentType.NUMBER
             },
             val: {
-              defaultValue: 0,
+              defaultValue: 180,
               type: ArgumentType.NUMBER
             }
           }
@@ -2631,7 +2609,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockType: BlockType.REPORTER,
           text: formatMessage({
             id: 'samlabs.getSensorValue',
-            default: '[num] sensor value'
+            default: '[num] value'
           }),
           terminal: false,
           arguments: {
@@ -2645,7 +2623,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
           blockType: BlockType.BOOLEAN,
           text: formatMessage({
             id: 'samlabs.getButton',
-            default: 'Is button [num] pressed?'
+            default: 'button [num] pressed?'
           }),
           terminal: false,
           arguments: {
@@ -2654,17 +2632,7 @@ var ExtensionBlocks = /*#__PURE__*/function () {
               type: ArgumentType.NUMBER
             }
           }
-        },
-        // {
-        //     opcode: 'getCelsius',
-        //     blockType: BlockType.REPORTER,
-        //     text: 'Temperature [num] (°C)',
-        //     terminal: false,
-        //     arguments: {
-        //         num: {menu: 'deviceMenu', type: ArgumentType.NUMBER}
-        //     }
-        // },
-        {
+        }, {
           opcode: 'getBattery',
           blockType: BlockType.REPORTER,
           text: formatMessage({
