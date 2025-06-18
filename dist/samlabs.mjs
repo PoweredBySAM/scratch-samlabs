@@ -4,9 +4,7 @@ var img = "data:image/svg+xml,%3c%3fxml version='1.0' encoding='utf-8'%3f%3e%3c!
 
 var en$1 = {
 	"samlabs.entry.name": "SAM Labs",
-	"samlabs.entry.description": "SAM Labs",
-	"sambot.entry.name": "Baby SAM Bot",
-	"sambot.entry.description": "Baby SAM Bot"
+	"samlabs.entry.description": "SAM Labs"
 };
 var translations$1 = {
 	en: en$1
@@ -618,19 +616,7 @@ var en = {
 	"samlabs.setBlockServo": "set servo motor [num] angle to [val] deg",
 	"samlabs.getSensorValue": "[num] value",
 	"samlabs.getButton": "button [num] pressed?",
-	"samlabs.getBattery": "[num] battery percentage",
-	"sambot.name": "Baby SAM Bot",
-	"sambot.getBattery": "battery percentage, Baby SAM Bot[num]",
-	"sambot.BabyBotExecCommand": "Baby SAM Bot[num] [command]",
-	"sambot.BabyBotPushCommand": "Baby SAM Bot[num] push[command] to itiner",
-	"sambot.BabyBotStart": "Baby SAM Bot[num] start",
-	"sambot.BabyBotStop": "Baby SAM Bot[num] stop",
-	"sambot.BabyBotClear": "Baby SAM Bot[num] clear itiner",
-	"sambot.BabyBotWrite": "Baby SAM Bot[num] set motor speed right [r], left [l]",
-	"sambot.commandMenu.forward": "move forward",
-	"sambot.commandMenu.backward": "move backward",
-	"sambot.commandMenu.right": "turn right",
-	"sambot.commandMenu.left": "turn left"
+	"samlabs.getBattery": "[num] battery percentage"
 };
 var es = {
 	"samlabs.name": "SAM Labs",
@@ -641,15 +627,7 @@ var es = {
 	"samlabs.setBlockServo": "configurar servo[num] ángulo [val]°",
 	"samlabs.getSensorValue": "[num] valor del sensor",
 	"samlabs.getButton": "¿está pulsado el botón [num] ?",
-	"samlabs.getBattery": "[num] porcentaje de batería",
-	"sambot.name": "Baby SAM Bot",
-	"sambot.getBattery": "Porcentaje de batería, Baby SAM Bot[num]",
-	"sambot.BabyBotExecCommand": "Baby SAM Bot[num] [command]",
-	"sambot.BabyBotPushCommand": "Baby SAM Bot[num] pulse[command] a itinerario",
-	"sambot.BabyBotStart": "Baby SAM Bot[num] iniciar",
-	"sambot.BabyBotStop": "Baby SAM Bot[num] stop",
-	"sambot.BabyBotClear": "Baby SAM Bot[num] itinerario claro",
-	"sambot.BabyBotWrite": "Baby SAM Bot[num] Ajustar la velocidad del motor derecho [r], e izquierdo [l]"
+	"samlabs.getBattery": "[num] porcentaje de batería"
 };
 var it = {
 	"samlabs.name": "SAM Labs",
@@ -660,15 +638,7 @@ var it = {
 	"samlabs.setBlockServo": "impostare servo [num] angolo [val]°",
 	"samlabs.getSensorValue": "[num] valore del sensore",
 	"samlabs.getButton": "il pulsante [num] è pressato?",
-	"samlabs.getBattery": "[num] percentuale di batteria",
-	"sambot.name": "Baby SAM Bot",
-	"sambot.getBattery": "Percentuale di batteria, Baby SAM Bot[num]",
-	"sambot.BabyBotExecCommand": "Baby SAM Bot[num] [command]",
-	"sambot.BabyBotPushCommand": "Baby SAM Bot[num] Imporre [command] all’itinerario",
-	"sambot.BabyBotStart": "Baby SAM Bot[num] Inizio",
-	"sambot.BabyBotStop": "Baby SAM Bot[num] Stop",
-	"sambot.BabyBotClear": "Baby SAM Bot[num] Reset itinerario",
-	"sambot.BabyBotWrite": "Baby SAM Bot[num] Impostare la velocità del moto a destra [r], a sinistra [l]"
+	"samlabs.getBattery": "[num] percentuale di batteria"
 };
 var translations = {
 	en: en,
