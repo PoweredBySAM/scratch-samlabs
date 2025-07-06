@@ -640,10 +640,36 @@ var it = {
 	"samlabs.getButton": "il pulsante [num] è pressato?",
 	"samlabs.getBattery": "[num] percentuale di batteria"
 };
+var hu = {
+	"samlabs.name": "SAM Labs",
+	"samlabs.connectToDevice": "Eszköz csatlakoztatása",
+	"samlabs.setLEDColor": "[num] státusz LED színe legyen: piros[red], zöld[green], kék[blue]",
+	"samlabs.setLEDColorBrightness": "[num] státusz LED fényereje legyen [brightness]%",
+	"samlabs.setLEDRGBColor": "RGB LED[num] színe legyen: piros[red], zöld[green], kék[blue]",
+	"samlabs.setLEDRGBColorBrightness": "RGB LED[num] fényereje legyen [brightness]%",
+	"samlabs.setBlockMotorSpeed": "[num] sebessége legyen [val]",
+	"samlabs.setBlockServo": "szervó[num] forduljon[val]°-os állásba",
+	"samlabs.getSensorValue": "szenzor[num] értéke",
+	"samlabs.getButton": "gomb [num] megnyomva?",
+	"samlabs.getBattery": "[num] akkumulátor töltöttsége (%)"
+};
+var cs = {
+	"samlabs.name": "SAM Labs",
+	"samlabs.connectToDevice": "Připojit zařízení",
+	"samlabs.setLEDColor": "nastavit barvu stavové LED číslo [num]: R[red], G[green], B[blue]",
+	"samlabs.setLEDRGBColor": "nastavit barvu RGB LED číslo [num]: R[red], G[green], B[blue]",
+	"samlabs.setBlockMotorSpeed": "nastavit rychlost motoru číslo [num] na [val]",
+	"samlabs.setBlockServo": "nastavit úhel serva číslo [num] na [val]°",
+	"samlabs.getSensorValue": "hodnota senzoru číslo [num]",
+	"samlabs.getButton": "je tlačítko číslo [num] stisknuté?",
+	"samlabs.getBattery": "procento baterie číslo [num]"
+};
 var translations = {
 	en: en,
 	es: es,
-	it: it
+	it: it,
+	hu: hu,
+	cs: cs
 };
 
 function _arrayWithHoles(r) {
