@@ -32,7 +32,7 @@
     "samlabs.setBlockServo": "impostare servo [num] angolo [val]°",
     "samlabs.getSensorValue": "[num] valore del sensore",
     "samlabs.getButton": "il pulsante [num] è pressato?",
-    "samlabs.getBattery": "[num] percentuale di batteria"
+    "samlabs.getBattery": "[num] percentuale di batteria"
   },
   "hu": {
     "samlabs.name": "SAM Labs",
